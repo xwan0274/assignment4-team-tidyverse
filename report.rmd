@@ -1,0 +1,58 @@
+---
+title: " "
+author:
+- familyname: YANG
+  othernames: Mengyuan
+  address: Monash University
+  email: "myan0065@student.monash.edu"
+  correspondingauthor: true
+  qualifications:  Master of Business Analytics
+- familyname: BATSAIKHAN
+  othernames: Zoljargal
+  address: Monash University
+  email: "zbat0001@student.monash.edu"
+  correspondingauthor: true
+  qualifications: Master of Business Analytics
+- familyname: WANG
+  othernames: Xinrui
+  address: Monash University
+  email: "xwan0274@student.monash.edu"
+  correspondingauthor: true
+  qualifications: Master of Business Analytics
+- familyname: GOH
+  othernames: XUEQI
+  address: MONASH UNIVERSITY
+  email: "xgoh0002@student.monash.edu"
+  correspondingauthor: true
+  qualifications: Master of Business Analytics
+department: Our consultancy \newline Mengyuan YANG &\newline Zoljargal BATSAIKHAN &\newline Xinrui WANG &\newline Xueqi GOH
+organization: Monash University
+bibliography: references.bib
+biblio-style: authoryear-comp
+linestretch: 1.5
+output:
+  bookdown::pdf_document2:
+    template: monashreport2.tex
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 8
+    includes:
+      in_header: preamble.tex
+    keep_tex: yes
+    number_sections: yes
+    citation_package: biblatex
+    toc: true
+---
+
+```{r , echo = FALSE, message = FALSE, warning = FALSE}
+# Libraries
+library(tidyverse)
+library(readr)
+library(kableExtra)
+library(bookdown)
+library(ggplot2)
+library(gridExtra)
+library(tinytex)
+```
+
+\section*{}
