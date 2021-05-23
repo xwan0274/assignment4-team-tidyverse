@@ -53,6 +53,28 @@ library(bookdown)
 library(ggplot2)
 library(gridExtra)
 library(tinytex)
+library(readxl)
 ```
 
+
+
+```{r}
+excel_sheets("data/API_4_DS2_en_excel_v2_2252569.xls")
+```
+
+```{r}
+df<- read_excel("Data/API_4_DS2_en_excel_v2_2252569.xls", sheet = 1, range = "A4:BM42772") %>% 
+  select("Country Name", 
+         "Country Code",
+         "Indicator Name", 
+         "2000":"2019") %>% 
+  rename("country" = "Country Name",
+         "indicator" = "Indicator Name")
+```
+
+
+
+
 \section*{}
+
+
