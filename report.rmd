@@ -20,7 +20,7 @@ author:
   correspondingauthor: true
   qualifications: Master of Business Analytics
 - familyname: GOH
-  othernames: XUEQI
+  othernames: Xueqi
   address: MONASH UNIVERSITY
   email: "xgoh0002@student.monash.edu"
   correspondingauthor: true
