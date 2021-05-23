@@ -54,6 +54,7 @@ library(ggplot2)
 library(gridExtra)
 library(tinytex)
 library(readxl)
+library(naniar)
 ```
 
 
@@ -72,6 +73,39 @@ df<- read_excel("Data/API_4_DS2_en_excel_v2_2252569.xls", sheet = 1, range = "A4
          "indicator" = "Indicator Name")
 ```
 
+
+```{r}
+df %>%
+  group_by(country) %>%
+  miss_var_summary() %>% 
+  arrange(-pct_miss)
+```
+
+```{r}
+df_filter <- df %>% 
+  filter(!(country %in% c("Faroe Islands",
+                          "Greenland",
+                          "Isle of Man",
+                          "Not classified",
+                          "St. Martin (French part)",
+                          "Northern Mariana Islands",
+                          "Kosovo",
+                          "American Samoa",
+                          "Gibraltar",
+                          "Sint Maarten (Dutch part)",
+                          "Turks and Caicos Islands",
+                          "Channel Islands",
+                          "Guam",
+                          "French Polynesia",
+                          "Curacao",
+                          "New Caledonia",
+                          "Virgin Islands (U.S.)",
+                          "Nauru",
+                          "Palau",
+                          "Somalia",
+                          "Guinea-Bissau")))
+       
+```
 
 
 
