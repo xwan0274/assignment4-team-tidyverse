@@ -143,7 +143,6 @@ df_outsch <- data_joined %>%
          "children_out_of_school_f_%" = `Children out of school, female (% of female primary school age)`)
 ```
 
-
 ```{r}
 outsch <- df_outsch %>% 
   filter(country_name %in% c("East Asia & Pacific",
@@ -168,6 +167,15 @@ os_clean <- outsch %>%
   select(-c(country_code, Region, `Income group.x`)) %>% 
   rename("region" = country_name,
          "income_group" = `Income group.y`)
+```
+
+```{r plot1xw, fig.cap="Percentage of children out of school in primary school age"}
+os_clean %>% 
+  ggplot(aes(x = as.numeric(year), y = `children_out_of_school_tot_%`, colour = region)) +
+  geom_line() +
+  labs(x = "Year", y = "Percentage") +
+  scale_fill_brewer(palette="Paired") +
+  theme_light() 
 ```
 
 
