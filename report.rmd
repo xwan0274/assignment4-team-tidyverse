@@ -209,14 +209,33 @@ ggplot(aes(x= as.numeric(year), y = percentage, fill = gender)) +
   theme_light() 
 ```
 
-In South Asia, the difference in percentage between male and female was the highest in 2000 and 2001, however, the difference decreased along with the total percentage, by the year of 2010, the figures became almost the same for both genders. Whereas in Sub-Saharan Africa and Middle East & North Africa, even though the total percentage drooped over the years, the percentage of children out of school is still higher for primary-school-age females than males in these two regions.
-
 ```{r}
-os_clean %>% 
-  group_by(region) %>% 
-  summarise(per_diff = `children_out_of_school_m_%` - `children_out_of_school_f_%`,
-            .groups = "drop")
+os_diff <- os_clean %>% 
+  filter(year %in% c(2000,2019)) %>% 
+  group_by(region, year) %>% 
+  summarise(per_diff = `children_out_of_school_f_%` - `children_out_of_school_m_%`,
+            .groups = "drop") %>% 
+  pivot_wider(names_from = year,
+              values_from = per_diff)
 ```
+
+According to Table \@ref(tab:tb1xw), in South Asia, the difference in percentage between male and female was the highest in 2000, the percentage of female children out of primary school is 13.05% higher than male. However, the difference decreased along with the total percentage, by the year of 2019, the difference in percentage has dropped to 1.26%. 
+
+Same changes can be observed in Middle East & North Africa, the difference in percentage also decreased from 7.33% to 1.94% between 2000 and 2019. Whereas in Sub-Saharan Africa, even though the total percentage drooped over the years, the difference in percentage between male and female school aged children did not decrease as much as in South Asia and Middle East & North Africa. In 2019, the percentage of female children out of primary school is still 4.29% higher compare with male.
+
+```{r tb1xw}
+os_diff[order(-os_diff$`2000`),] %>% 
+  kable(col.names = c("Region", 
+                      "Difference in percentage - 2000",
+                      "Difference in percentage - 2019"),
+      align = "c",
+      caption = "Difference in percentage of primary-school-age children out of school between males and females", 
+      digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped","hover"),
+                latex_options = "HOLD_position")
+```
+
+Another interesting finding is that in Europe & Central Asia and Latin America & Caribbean, the difference in percentage is -0.14% and -0.56% respectively in 2019, which indicates that in 2019, the percentage of primary-school-age male who are not enrolled in primary or secondary school is actually slightly higher than female, although the difference is very close to zero (Table \@ref(tab:tb1xw)).
 
 
 \section*{Xueqi}
