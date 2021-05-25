@@ -182,6 +182,30 @@ os_clean %>%
   theme_light() 
 ```
 
+```{r}
+os_gender <- os_clean %>% 
+  rename("male" = `children_out_of_school_m_%`,
+         "female" = `children_out_of_school_f_%`) %>% 
+  pivot_longer(cols = c(male,female),
+               names_to = "gender",
+               values_to = "percentage") %>% 
+  select(-`children_out_of_school_tot_%`)
+```
+
+
+```{r}
+os_gender %>% 
+ggplot(aes(x= as.numeric(year), y = percentage, fill = gender)) +
+  facet_wrap(~region,
+             ncol = 2) +
+  geom_bar(stat = "identity",
+           position = "dodge") +
+  xlim(c(2000,2019)) +
+  labs(x = "Year", y = "Percentage") +
+  scale_fill_brewer(palette="Paired") +
+  theme_light() 
+```
+
 
 
 \section*{Xueqi}
