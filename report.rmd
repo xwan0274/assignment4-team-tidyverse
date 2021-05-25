@@ -157,6 +157,19 @@ lit_long %>%
   
 ```
 
+Figure \@ref(fig:world-my) shows that although the literacy rate for adult aged 15 and above is lower that the literacy rate for youth aged 15-24 in each year, both rates are showing a slow and steady increase over the years. The improvements in the expansion of basic education and the reduction of education inequalities have contributed to an increase in the global literacy rate, over the last 65 years it increased by 4% every 5 years (Roser and Ortiz-Ospina, 2016)
+
+https://ourworldindata.org/literacy#citation
+
+@article{owidliteracy,
+    author = {Max Roser and Esteban Ortiz-Ospina},
+    title = {Literacy},
+    journal = {Our World in Data},
+    year = {2016},
+    note = {https://ourworldindata.org/literacy}
+}
+
+
 ```{r regions-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE, warning = FALSE}
 lit_long %>% 
   filter(country_name %in% c("Central Europe and the Baltics",
@@ -181,6 +194,11 @@ lit_long %>%
        color = "Regions") +
   ggtitle("Literacy Rate for Adult and Youth in Differenet Regions")
 ```
+
+As the figure \@ref(fig:regions-my) shown above, there was a significant increase in the literacy rate in adult aged 15 and above in Middle East & North Africa, South Asia and Sub-Saharan Africa. South Asia and Sub-Saharan Africa also had improved the literacy rate tremendously in the youth age group over the years. Both East Asia & Pacific and Latin America & Caribbean had an 5% increase in literacy rate in the adult group where as the literacy rate increase approximately 4% in the youth group in Latin America & Caribbean and a small increase in the youth group in East Asia & Pacific. Regions like Central Europe and the Baltics and Europe & Central Asia had maintained a high literacy rate in both age groups over the years.
+
+
+
 
 ```{r income-my, fig.cap = "Literacy Rate for Adult and Youth in Differenet Income Groups", echo = FALS}
 lit_long %>% 
