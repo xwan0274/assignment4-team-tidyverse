@@ -130,7 +130,7 @@ lit_long <- data_joined %>%
                names_to = "year",
                values_to = "rate")
 
-# remoce strings
+# remove strings in indicator variable
 lit_long$indicator <- lit_long$indicator %>% 
   substring(16) %>%
   str_remove("\\(") %>% 
@@ -139,7 +139,23 @@ lit_long$indicator <- lit_long$indicator %>%
   str_remove("total  of people ")
 ```
 
-
+```{r world, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE, message = FALSE}
+lit_long %>% 
+  filter(country_name == "World") %>% 
+  ggplot(aes(x = year,
+             y = rate,
+             fill = indicator)) +
+  geom_col(position = "dodge", width = 0.7) +
+  theme_bw() +
+  ylim(0, 100) +
+  theme(axis.text.x = element_text(angle = 60, vjust = 0.5, hjust=0.5)) +
+  scale_fill_brewer(palette = "Paired") +
+  labs(x = "Year",
+       y = "Literacy rate",
+       fill = "Age") +
+  ggtitle("Global Literacy Rate for Adult and Youth between 2000-2019")
+  
+```
 
 
 
