@@ -144,6 +144,21 @@ df_outsch <- data_joined %>%
 ```
 
 
+```{r}
+outsch <- df_outsch %>% 
+  filter(country_name %in% c("East Asia & Pacific",
+                             "Europe & Central Asia",
+                             "Latin America & Caribbean",
+                             "Middle East & North Africa",
+                             "North America",
+                             "South Asia",
+                             "Sub-Saharan Africa")) 
+
+```
+
+
+
+
 \section*{Xueqi}
 
 
