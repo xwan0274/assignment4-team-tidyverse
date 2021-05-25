@@ -58,9 +58,14 @@ library(naniar)
 ```
 
 
+\section*{Introduction}
 
 ```{r}
 excel_sheets("data/API_4_DS2_en_excel_v2_2252569.xls")
+
+data_income <- read_excel("data/CLASS.xls", range = anchored("C5", dim = c(220,5))) %>% 
+  select(-X) %>% 
+  filter(Economy != "x")
 ```
 
 ```{r}
@@ -69,21 +74,22 @@ df<- read_excel("Data/API_4_DS2_en_excel_v2_2252569.xls", sheet = 1, range = "A4
          "Country Code",
          "Indicator Name", 
          "2000":"2019") %>% 
-  rename("country" = "Country Name",
-         "indicator" = "Indicator Name")
+  rename("country_name" = "Country Name",
+         "indicator" = "Indicator Name",
+         "country_code" = "Country Code")
 ```
 
 
 ```{r}
 df %>%
-  group_by(country) %>%
+  group_by(country_name) %>%
   miss_var_summary() %>% 
   arrange(-pct_miss)
 ```
 
 ```{r}
 df_filter <- df %>% 
-  filter(!(country %in% c("Faroe Islands",
+  filter(!(country_name %in% c("Faroe Islands",
                           "Greenland",
                           "Isle of Man",
                           "Not classified",
@@ -107,8 +113,23 @@ df_filter <- df %>%
        
 ```
 
+```{r}
+data_joined <- df_filter %>% 
+    left_join(data_income, by = c("country_name" = "Economy",
+                                "country_code" = "Code")) 
+```
+
+\section*{Mengyun}
 
 
-\section*{}
+\section*{Zoljargal}
 
+
+\section*{Xinrui}
+
+
+\section*{Xueqi}
+
+
+\section*{Conclusion}
 
