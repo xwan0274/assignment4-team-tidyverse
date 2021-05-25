@@ -129,6 +129,13 @@ data_joined <- df_filter %>%
 
 
 \section*{Xueqi}
+```{r}
+df_xq <- data_joined %>%
+   pivot_longer(cols = c("2000":"2019"),
+               names_to = "year",
+               values_to = "value") %>%
+ dplyr::filter(str_detect(indicator, 'Pupil-teacher ratio') & !str_detect(value, "NA"))
+```
 
 
 \section*{Conclusion}
