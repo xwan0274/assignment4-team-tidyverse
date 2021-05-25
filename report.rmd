@@ -124,6 +124,40 @@ data_joined <- df_filter %>%
 
 \section*{Zoljargal}
 
+```{r}
+data_zb <- data_joined %>% 
+  pivot_longer(cols = c("2000":"2019"),
+               names_to = "year",
+               values_to = "value") %>% 
+  filter(indicator %in% c("Government expenditure on education, total (% of GDP)",
+                          "Government expenditure on education, total (% of government expenditure)",
+                          "Expenditure on secondary education (% of government expenditure on education)",
+                          "Government expenditure per student, secondary (% of GDP per capita)",
+                          "Expenditure on primary education (% of government expenditure on education)",
+                          "Government expenditure per student, primary (% of GDP per capita)")) %>% 
+  pivot_wider(names_from = indicator,
+              values_from = value) %>% 
+  drop_na(Region) %>% 
+  rename("income_group" = "Income group",
+         "region" = "Region")
+
+selected_indicators = c("Government expenditure on education, total (% of GDP)",
+                          "Government expenditure on education, total (% of government expenditure)",
+                          "Expenditure on secondary education (% of government expenditure on education)",
+                          "Government expenditure per student, secondary (% of GDP per capita)",
+                          "Expenditure on primary education (% of government expenditure on education)",
+                          "Government expenditure per student, primary (% of GDP per capita)")
+
+new_name = c("ex_total_GDP",
+             "ex_total_gov_ex",
+             "ex_secondary",
+             "ex_per_student_secondary",
+             "ex_primary",
+             "ex_per_student_primary")
+
+for(i in 1:6) names(data_zb)[names(data_zb) == selected_indicators[i]] = new_name[i]
+```
+
 
 \section*{Xinrui}
 
