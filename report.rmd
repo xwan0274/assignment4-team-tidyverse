@@ -156,6 +156,17 @@ outsch <- df_outsch %>%
 
 ```
 
+```{r}
+income_level <- data_income %>% 
+  select(Region,`Income group`)
+```
+
+```{r}
+os_clean <- outsch %>% 
+  left_join(income_level,
+            by = c("country_name" = "Region")) %>% 
+  select(-c(Region, `Income group.x`))
+```
 
 
 
