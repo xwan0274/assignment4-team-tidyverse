@@ -1,0 +1,128 @@
+---
+title: "xxxxxxx"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+    source_code: embed
+---
+
+```{r setup, include=FALSE}
+# install.packages(c("tidyverse", "readxl", "plotly", "ggmap"))
+library(flexdashboard)
+library(ggplot2)
+library(readxl)
+library(tidyverse)
+library(plotly)
+library(ggmap)
+library(gganimate)
+library(gifski)
+library(png)
+```
+
+
+Overview {data-icon="fa-globe"}
+=============================
+Inputs {.sidebar data-width=400}
+-------------------------------------
+
+### Table of Contents
+
+
+
+
+Row{data-height=600}
+--------------------------------------
+
+### Introduction
+
+
+
+
+
+
+Row
+--------------------------------------
+
+### XXXXX
+
+insert gif
+
+
+
+Section 1 {data-icon="ion-android-search"}
+=============================
+Row{data-width=150}
+--------------------------------------
+
+### ???
+```{r rw}
+
+valueBox(value = "1", icon = "ion-university",caption = "XXXXXXX",color = "green")
+```
+
+Row
+----------------------------------
+
+### ?????
+```{r}
+
+
+```
+
+
+Section 2 {data-icon="ion-android-search"}
+=============================
+Row{data-width=150}
+--------------------------------------
+### ???
+```{r}
+
+valueBox(value = 2,icon = "ion-university",caption = "???", color = "orange")
+```
+
+
+
+
+Section 3 {data-icon="ion-android-search"}
+=============================
+Row{data-width=150}
+--------------------------------------
+
+### ???
+```{r}
+
+valueBox(value = 2,icon = "ion-university",caption = "???", color = "coral")
+```
+
+
+Row
+----------------------------------
+
+### Number of Offences by Gender
+```{r}
+
+
+```
+
+
+Section 4 {data-icon="ion-android-search"}
+=============================
+Row{data-width=150}
+--------------------------------------
+
+### ???
+```{r}
+
+valueBox(value = 2,icon = "ion-university",caption = "???", color = "coral")
+```
+
+
+Row
+----------------------------------
+
+### Number of Offences by Gender
+```{r}
+
+
+```
