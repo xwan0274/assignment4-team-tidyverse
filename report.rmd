@@ -121,7 +121,7 @@ data_joined <- df_filter %>%
 
 \section*{Mengyun}
 
-```{r longdata, echo = FLASE}
+```{r longdata-my, echo = FLASE}
 # filter and pivot data to longer form
 lit_long <- data_joined %>% 
   filter(str_detect(indicator, "Literacy")) %>% 
@@ -139,14 +139,14 @@ lit_long$indicator <- lit_long$indicator %>%
   str_remove("total  of people ")
 ```
 
-```{r world, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE, message = FALSE}
+```{r world-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE, message = FALSE}
 lit_long %>% 
   filter(country_name == "World") %>% 
   ggplot(aes(x = year,
              y = rate,
              fill = indicator)) +
   geom_col(position = "dodge", width = 0.7) +
-  theme_bw() +
+  theme_light() +
   ylim(0, 100) +
   theme(axis.text.x = element_text(angle = 60, vjust = 0.5, hjust=0.5)) +
   scale_fill_brewer(palette = "Paired") +
@@ -157,7 +157,34 @@ lit_long %>%
   
 ```
 
+```{r regions-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE, message = FALSE}
+lit_long %>% 
+  filter(country_name %in% c("Central Europe and the Baltics",
+                             "East Asia & Pacific",
+                             "Europe and Central Asia",
+                             "Latin America & Caribbean",
+                             "Middle East & North Africa",
+                             "South Asia",
+                             "Sub-Saharan Africa")) %>% 
+  group_by(indicator) %>% 
+  ggplot(aes(x = year,
+             y = rate,
+             group = country_name,
+             color = country_name)) +
+  geom_line() +
+  facet_wrap(~indicator) +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5)) +
+  scale_fill_brewer(palette = "Paired") +
+  labs(x = "Year",
+       y = "Literacy rate",
+       color = "Regions") +
+  ggtitle("Literacy Rate for Adult and Youth in Differenet Regions")
+```
 
+```{r income-my}
+
+```
 
 
 
