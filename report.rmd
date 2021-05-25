@@ -127,6 +127,22 @@ data_joined <- df_filter %>%
 
 \section*{Xinrui}
 
+```{r}
+df_outsch <- data_joined %>% 
+  filter(indicator %in% c("Children out of school (% of primary school age)",
+                          "Children out of school, male (% of male primary school age)",
+                          "Children out of school, female (% of female primary school age)")) %>% 
+  pivot_longer(cols = "2000":"2019",
+               names_to = "year",
+               values_to = "value") %>% 
+  pivot_wider(id_cols = -indicator,
+              names_from = indicator,
+              values_from = value) %>% 
+  rename("children_out_of_school_tot_%" = `Children out of school (% of primary school age)`,
+         "children_out_of_school_m_%" = `Children out of school, male (% of male primary school age)`,
+         "children_out_of_school_f_%" = `Children out of school, female (% of female primary school age)`)
+```
+
 
 \section*{Xueqi}
 
