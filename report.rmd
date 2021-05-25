@@ -127,7 +127,7 @@ data_joined <- df_filter %>%
 
 \section*{Percentage of children out of primary school}
 
-This section discusses the percentage of primary-school-age children who are not enrolled in primary or secondary school across regions between 2000 to 2019, including the changes in pattern over these two decades and comparisons among different regions. 
+This section discusses the percentage of primary-school-age children who are not enrolled in primary or secondary school across regions between 2000 to 2019, including the changes of overall percentage and the difference in percentage between gender over these two decades. 
 
 ```{r}
 df_outsch <- data_joined %>% 
