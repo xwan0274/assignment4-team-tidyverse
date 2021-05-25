@@ -157,11 +157,11 @@ lit_long %>%
   
 ```
 
-```{r regions-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE, message = FALSE}
+```{r regions-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE, warning = FALSE}
 lit_long %>% 
   filter(country_name %in% c("Central Europe and the Baltics",
                              "East Asia & Pacific",
-                             "Europe and Central Asia",
+                             "Europe & Central Asia",
                              "Latin America & Caribbean",
                              "Middle East & North Africa",
                              "South Asia",
@@ -175,15 +175,32 @@ lit_long %>%
   facet_wrap(~indicator) +
   theme_light() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5)) +
-  scale_fill_brewer(palette = "Paired") +
+  scale_colour_brewer(palette = "Paired") +
   labs(x = "Year",
        y = "Literacy rate",
        color = "Regions") +
   ggtitle("Literacy Rate for Adult and Youth in Differenet Regions")
 ```
 
-```{r income-my}
-
+```{r income-my, fig.cap = "Literacy Rate for Adult and Youth in Differenet Income Groups", echo = FALS}
+lit_long %>% 
+  filter(country_name %in% c("Low income",
+                             "Lower middle income",
+                             "Middle income",
+                             "Upper middle income")) %>% 
+  ggplot(aes(x = rate,
+             y = year,
+             fill = indicator)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~country_name, 
+             ncol = 4,
+             labeller = label_wrap_gen(width = 18)) +
+  theme_light() +
+  scale_fill_brewer(palette = "Paired") +
+  labs(x = "Literacy rate",
+       y = "Year",
+       color = "Age") +
+  ggtitle("Literacy Rate for Adult and Youth in Differenet Income Groups")
 ```
 
 
