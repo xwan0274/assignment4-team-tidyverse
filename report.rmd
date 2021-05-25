@@ -165,7 +165,9 @@ income_level <- data_income %>%
 os_clean <- outsch %>% 
   left_join(income_level,
             by = c("country_name" = "Region")) %>% 
-  select(-c(Region, `Income group.x`))
+  select(-c(country_code, Region, `Income group.x`)) %>% 
+  rename("region" = country_name,
+         "income_group" = `Income group.y`)
 ```
 
 
