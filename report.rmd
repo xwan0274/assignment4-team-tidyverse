@@ -169,6 +169,8 @@ os_clean <- outsch %>%
   select(-c(country_code, Region, `Income group.x`)) %>% 
   rename("region" = country_name,
          "income_group" = `Income group.y`)
+
+os_clean <- unique(os_clean[ , 1:5])
 ```
 
 Figure \@ref(fig:plot1xw) shows that among all of the seven regions, Sub-Saharan Africa has the highest percentage of primary-school-age children out of school, followed by South Asia and Middle East & North Africa. However, all of these three countries witnessed a decrease in the percentage, especially in Sub-Saharan Africa, the figure dropped from nearly 40% in 2000 to lower than 20% in 2019. The percentage in South Asia and Middle East & North Africa also decreased to below 10% in 2019 while the figure for rest regions remained relatively steady between 0-5%.
@@ -208,6 +210,13 @@ ggplot(aes(x= as.numeric(year), y = percentage, fill = gender)) +
 ```
 
 In South Asia, the difference in percentage between male and female was the highest in 2000 and 2001, however, the difference decreased along with the total percentage, by the year of 2010, the figures became almost the same for both genders. Whereas in Sub-Saharan Africa and Middle East & North Africa, even though the total percentage drooped over the years, the percentage of children out of school is still higher for primary-school-age females than males in these two regions.
+
+```{r}
+os_clean %>% 
+  group_by(region) %>% 
+  summarise(per_diff = `children_out_of_school_m_%` - `children_out_of_school_f_%`,
+            .groups = "drop")
+```
 
 
 \section*{Xueqi}
