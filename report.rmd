@@ -121,14 +121,25 @@ data_joined <- df_filter %>%
 
 \section*{Mengyun}
 
-```{r}
-lit_df <- data_joined %>% 
+```{r longdata, echo = FLASE}
+# filter and pivot data to longer form
+lit_long <- data_joined %>% 
   filter(str_detect(indicator, "Literacy")) %>% 
   filter(str_detect(indicator, "total")) %>% 
   pivot_longer(cols = c("2000":"2019"),
                names_to = "year",
                values_to = "rate")
+
+# remoce strings
+lit_long$indicator <- lit_long$indicator %>% 
+  substring(16) %>%
+  str_remove("\\(") %>% 
+  str_remove("\\)") %>% 
+  str_remove("\\%") %>% 
+  str_remove("total  of people ")
 ```
+
+
 
 
 
