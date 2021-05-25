@@ -171,7 +171,7 @@ os_clean <- outsch %>%
          "income_group" = `Income group.y`)
 ```
 
-Figure \@ref(fig:plot1xw) shows that among all of the seven regions, Sub-Saharan Africa has the highest percentage of primary-aged children out of school, followed by South Asia and Middle East & North Africa. However, all of these three countries witnessed a decrease in the percentage, especially in Sub-Saharan Africa, the figure dropped from nearly 40% in 2000 to lower than 20% in 2019. The percentage in South Asia and Middle East & North Africa also decreased to below 10% in 2019 while the figure for rest regions remained relatively steady between 0-5%.
+Figure \@ref(fig:plot1xw) shows that among all of the seven regions, Sub-Saharan Africa has the highest percentage of primary-school-age children out of school, followed by South Asia and Middle East & North Africa. However, all of these three countries witnessed a decrease in the percentage, especially in Sub-Saharan Africa, the figure dropped from nearly 40% in 2000 to lower than 20% in 2019. The percentage in South Asia and Middle East & North Africa also decreased to below 10% in 2019 while the figure for rest regions remained relatively steady between 0-5%.
 
 ```{r plot1xw, fig.cap="Percentage of children out of school in primary school age"}
 os_clean %>% 
@@ -192,8 +192,9 @@ os_gender <- os_clean %>%
   select(-`children_out_of_school_tot_%`)
 ```
 
+To have a deeper understanding, Figure \@ref(fig:plot1xw) explores the difference of percentage of primary-school-age out of school in gender across regions. Again, in Middle East & North Africa, South Asia and Sub-Saharan Africa, where the total percentage is significantly higher, it is obvious that more females in primary school age are out of school compare with males.
 
-```{r}
+```{r plot2xw, fig.cap="Percentage of children out of school in primary school age by gender", warning=FALSE}
 os_gender %>% 
 ggplot(aes(x= as.numeric(year), y = percentage, fill = gender)) +
   facet_wrap(~region,
@@ -206,6 +207,7 @@ ggplot(aes(x= as.numeric(year), y = percentage, fill = gender)) +
   theme_light() 
 ```
 
+In South Asia, the difference in percentage between male and female was the highest in 2000 and 2001, however, the difference decreased along with the total percentage, by the year of 2010, the figures became almost the same for both genders. Whereas in Sub-Saharan Africa and Middle East & North Africa, even though the total percentage drooped over the years, the percentage of children out of school is still higher for primary-school-age females than males in these two regions.
 
 
 \section*{Xueqi}
