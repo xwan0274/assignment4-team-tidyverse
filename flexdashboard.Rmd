@@ -280,7 +280,7 @@ Row {.tabset data-height=700}
 --------------------------------------
 
 ### **Percentage of Children Out of School - Total**
-```{r fig.align= 'center', fig.width= 7, fig.cap="Percentage of children out of school in primary school age"}
+```{r fig.cap="Percentage of children out of school in primary school age", fig.width=12, fig.height=6}
 df_outsch <- data_joined %>% 
   filter(indicator %in% c("Children out of school (% of primary school age)",
                           "Children out of school, male (% of male primary school age)",
@@ -329,7 +329,7 @@ ggplotly(plot1_cos)
 
 ### **Difference in Percentage by Gender**
 
-```{r fig.align= 'center', fig.width= 7, fig.cap="Percentage of children out of school in primary school age by gender"}
+```{r fig.cap="Percentage of children out of school in primary school age by gender", fig.width=12, fig.height=6}
 os_gender <- os_clean %>% 
   rename("male" = `children_out_of_school_m_%`,
          "female" = `children_out_of_school_f_%`) %>% 
@@ -375,6 +375,25 @@ os_diff[order(-os_diff$`2000`),] %>%
                 latex_options = "HOLD_position")
 ```
 
+Column {.sidebar data-width=400}
+--------------------------------------
+> Key Findings
+
+* From the line graph 
+
+  * Sub-Saharan Africa has the highest percentage of primary-school-age children out of school
+  * Followed by South Asia and Middle East & North Africa
+  * The percentage dropped for all these three regions from 2000 to 2019
+
+* From the bar plot
+
+  * More females in primary school age are out of school compare with males in Middle East & North Africa, South Asia and Sub-Saharan Africa
+
+* From the table
+  
+  * The difference in percentage is the highest in South Asia in 2000, but it dropped significantly in the two decades
+  * Same trend can be observed in Middle East & North Africa
+  * Percentage of male primary-school-aged children who are out of school is slightly higher than female in Europe & Central Asia and Latin America & Caribbean in 2019
 
 
 
