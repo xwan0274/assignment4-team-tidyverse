@@ -296,8 +296,6 @@ data_zb$country_name[which(data_zb$country_name == "Congo, Rep.")] = "Democratic
 data_zb$country_name[which(data_zb$country_name == "Venezuela, RB")] = "Venezuela"
 data_zb$country_name[which(data_zb$country_name == "Yemen, Rep.")] = "Yemen"
 data_zb$country_name[which(data_zb$country_name == "Egypt, Arab Rep.")] = "Egypt"
-data_zb <- data_zb %>% 
-  left_join(data_gdp, by = c("country_name", "country_code", "year"))
 ```
 ### **Government expenditure on education (% of GDP), 2000-2019**
 ```{r plot1-zb, fig.cap = "Government expenditure on education (% of GDP), 2000-2019"}
@@ -367,7 +365,32 @@ data_zb %>%
   kable_styling(bootstrap_options = c("striped", "hover"))
 ```
 
+Column {.sidebar data-width=400}
+--------------------------------------
+> Key Findings
 
+* From the map
+
+  * The average government spending on education across countries ranged between 1.2% - 11.5% of their GDP.
+
+* By income group
+
+  * What evident on the graph is that the low income countries are devoted much lesser proportion of their GDP but also we can see that spending has increased on average for those countries. 
+  * On the other hand, high income countries spending more share of their GDP roughly between 4.5% to 5%.
+  * However the data had many missing values, a broad upward trend can be observed.
+
+* By region
+  
+  * During the time period, South Asia and Sub-Saharan Africa had the lowest spending ranging between 3-4% but again, the plot shows upward trend for those regions. 
+  * For the other regions, it has been relatively stable over time.
+
+* From table
+  * The increase in education spending is evident for the majority of countries. 
+  * But it remained at same level for upper middle income countries.
+
+* Conclusion
+  * Overall, it can be concluded that the total amount of global resources spent on education is increasing over the world.
+  
 Children Out of School {data-icon="ion-android-search"}
 =============================
 Row{data-height=150}
