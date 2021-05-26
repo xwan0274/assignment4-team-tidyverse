@@ -23,6 +23,7 @@ library(gifski)
 library(png)
 # install.packages("bslib")
 library(bslib)
+library(kableExtra)
 ```
 
 
@@ -276,10 +277,10 @@ valueBox(value = "Percentage of children out of primary school 🏫", icon = "io
 ```
 
 Row {.tabset data-height=700}
-----------
+--------------------------------------
 
 ### **Percentage of Children Out of School - Total**
-```{r fig.align= 'center', fig.width= 7}
+```{r fig.align= 'center', fig.width= 7, fig.cap="Percentage of children out of school in primary school age"}
 df_outsch <- data_joined %>% 
   filter(indicator %in% c("Children out of school (% of primary school age)",
                           "Children out of school, male (% of male primary school age)",
@@ -328,7 +329,7 @@ ggplotly(plot1_cos)
 
 ### **Difference in Percentage by Gender**
 
-```{r fig.align= 'center', fig.width= 7}
+```{r fig.align= 'center', fig.width= 7, fig.cap="Percentage of children out of school in primary school age by gender"}
 os_gender <- os_clean %>% 
   rename("male" = `children_out_of_school_m_%`,
          "female" = `children_out_of_school_f_%`) %>% 
@@ -352,10 +353,27 @@ ggplotly(plot2_cos)
 
 ```
 
+### **Difference in Percentage by Gender in 2000 and 2019**
 
+```{r}
+os_diff <- os_clean %>% 
+  filter(year %in% c(2000,2019)) %>% 
+  group_by(region, year) %>% 
+  summarise(per_diff = `children_out_of_school_f_%` - `children_out_of_school_m_%`,
+            .groups = "drop") %>% 
+  pivot_wider(names_from = year,
+              values_from = per_diff)
 
-
-
+os_diff[order(-os_diff$`2000`),] %>% 
+  kable(col.names = c("Region", 
+                      "Difference in percentage - 2000",
+                      "Difference in percentage - 2019"),
+      align = "c",
+      caption = "Difference in percentage of primary-school-age children out of school between males and females", 
+      digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped","hover"),
+                latex_options = "HOLD_position")
+```
 
 
 
