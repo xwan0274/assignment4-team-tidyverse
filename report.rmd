@@ -154,7 +154,41 @@ df1
 ```  
 Table \@ref(tab:Table1) indicates that worldwide pupil-teacher ratio has a greatest average ratio of 24.74901 in the primary level and a lowest average ratio of 15.57764 in the upper secondary level between 2000 to 2019, holding other variables constant.
   
+  
+```{r warning=FALSE}  
+df2 <- df_xq %>%
+  group_by(Indicator, Region)
+  
+  time_seriess <- ggplot(df2, aes(x = year,
+             y = value,
+             fill = Indicator)) +
+  geom_col(alpha = 0.8, width = 0.85, position = "fill") +
+  scale_fill_brewer(palette = "Dark2") +
+  scale_y_continuous(expand = c(0, 0.1)) +
+  coord_flip() +
+  
+  labs(
+    tittle = "Pupil-teacher ratio (%) between 2000-2019",
+    x = "Years",
+    y = "Pupil-teacher ratio (%)"
+  ) +
+  theme_minimal(base_family = "Roboto Condensed") +
+  theme(
+    plot.margin = margin(0.5, 0.5, 0.5, unit = "cm"),
+    plot.title = element_text(size = 15, face = "bold"),
+    strip.text.y = element_text(angle = 270, face = "bold"),
+    strip.placement = "outside",
+    axis.title.x = element_text(margin = margin(t = 0.5, b = 0.5, unit = "cm")),
+    axis.title.y = element_blank(),
+    axis.text = element_text(size = 10),
+    panel.grid.major.y = element_blank(),
+  )
 
+plotly::ggplotly(time_seriess)
+```
+  
+  
+  
 
 
 
