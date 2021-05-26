@@ -140,20 +140,8 @@ df_xq <- data_joined %>%
         "Indicator" = "indicator") 
 ```
   
+  
 
-```{r Table1}
- df1 <- df_xq %>%
-  group_by(Indicator) %>%
-  select(Indicator, Region, value) %>%
-  summarise(Average_ratio = mean(value, na.rm = TRUE)) %>% 
-  arrange(-Average_ratio) %>% 
-  kable(caption = "Worldwide Average Pupil-teacher ratio between 2000-2019") %>%
-  kable_styling (bootstrap_options = c("striped", "hover"))
-  
-df1
-```  
-Table \@ref(tab:Table1) indicates that worldwide pupil-teacher ratio has a greatest average ratio of 24.74901 in the primary level and a lowest average ratio of 15.57764 in the upper secondary level between 2000 to 2019, holding other variables constant.
-  
   
 ```{r warning=FALSE}  
 df2 <- df_xq %>%
@@ -185,7 +173,25 @@ df2 <- df_xq %>%
   )
 
 plotly::ggplotly(time_seriess)
-```
+```  
+  
+highest/ lowest
+```{r Table1}
+ df1 <- df_xq %>%
+  group_by(Indicator, Region) %>%
+  select(Indicator, Region, value) %>%
+  summarise(Average_ratio = mean(value, na.rm = TRUE)) %>% 
+  arrange(-Average_ratio) %>% 
+  kable(caption =  "Average Pupil-teacher ratio between 2000-2019 in each Region") %>%
+  kable_styling (bootstrap_options = c("striped", "hover")) 
+  
+  
+df1
+```  
+Table \@ref(tab:Table1) indicates that worldwide pupil-teacher ratio has a greatest average ratio of 24.74901 in the primary level and a lowest average ratio of 15.57764 in the upper secondary level between 2000 to 2019, holding other variables constant.
+  
+  
+
   
   
   
