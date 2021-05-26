@@ -244,15 +244,15 @@ animate(plot3, fps = 20, duration = 20, end_pause = 80)
 
 
 
-Section 2 {data-icon="ion-android-search"}
+Education spending {data-icon="ion-android-search"}
 =============================
 Row{data-height=150}
 --------------------------------------
 
 
-### ???
+### World map
 ```{r}
-valueBox(value = 2,icon = "ion-university",caption = "???", color = "orange")
+valueBox(value = "Government expenditure on education, total (% of GDP) 🏫", icon = "ion-university", caption = "Average government expenditure on education (% of GDP), 2000-2019", color = "orange")
 ```
 
 
@@ -260,9 +260,54 @@ Row
 --------------------------------------
 
 ```{r}
-
+data_gdp <- read_excel("data/GDPpercapita.xls", range = anchored("A4", dim = c(265,64))) %>% 
+  select("Country Name", 
+         "Country Code", 
+         "2000":"2019") %>% 
+  rename("country_name" = "Country Name",
+         "country_code" = "Country Code") %>% 
+  pivot_longer(cols = "2000":"2019",
+               names_to = "year",
+               values_to = "GDPpercapita")
+data_zb <- data_joined %>% 
+  pivot_longer(cols = c("2000":"2019"),
+               names_to = "year",
+               values_to = "value") %>% 
+  filter(indicator %in% c("Government expenditure on education, total (% of GDP)",
+                          "Government expenditure on education, total (% of government expenditure)",
+                          "Expenditure on secondary education (% of government expenditure on education)",
+                          "Government expenditure per student, secondary (% of GDP per capita)",
+                          "Expenditure on primary education (% of government expenditure on education)",
+                          "Government expenditure per student, primary (% of GDP per capita)")) %>% 
+  pivot_wider(names_from = indicator,
+              values_from = value) %>% 
+  drop_na(Region) %>% 
+  rename("income_group" = "Income group",
+         "region" = "Region")
+selected_indicators = c("Government expenditure on education, total (% of GDP)",
+                          "Government expenditure on education, total (% of government expenditure)",
+                          "Expenditure on secondary education (% of government expenditure on education)",
+                          "Government expenditure per student, secondary (% of GDP per capita)",
+                          "Expenditure on primary education (% of government expenditure on education)",
+                          "Government expenditure per student, primary (% of GDP per capita)")
+new_name = c("ex_total_GDP",
+             "ex_total_gov_ex",
+             "ex_secondary",
+             "ex_per_student_secondary",
+             "ex_primary",
+             "ex_per_student_primary")
+for(i in 1:6) names(data_zb)[names(data_zb) == selected_indicators[i]] = new_name[i]
+data_zb$country_name[which(data_zb$country_name == "United States")] = "USA"
+data_zb$country_name[which(data_zb$country_name == "United Kingdom")] = "UK"
+data_zb$country_name[which(data_zb$country_name == "Russian Federation")] = "Russia"
+data_zb$country_name[which(data_zb$country_name == "Iran, Islamic Rep.")] = "Iran"
+data_zb$country_name[which(data_zb$country_name == "Congo, Rep.")] = "Democratic Republic of the Congo"
+data_zb$country_name[which(data_zb$country_name == "Venezuela, RB")] = "Venezuela"
+data_zb$country_name[which(data_zb$country_name == "Yemen, Rep.")] = "Yemen"
+data_zb$country_name[which(data_zb$country_name == "Egypt, Arab Rep.")] = "Egypt"
+data_zb <- data_zb %>% 
+  left_join(data_gdp, by = c("country_name", "country_code", "year"))
 ```
-
 
 
 
