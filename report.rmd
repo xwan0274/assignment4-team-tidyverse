@@ -191,7 +191,7 @@ data2_zb <- data_zb %>%
 
 ggplot(data2_zb, aes(x=year, y=mean, group = income_group)) + 
     geom_line(aes(color = income_group)) +
-  geom_point()
+  geom_point(aes(color = income_group))
 ```
 
 ```{r}
@@ -203,12 +203,21 @@ data3_zb <- data_zb %>%
 
 data3_zb %>% 
   ggplot(aes(x=year, y=mean, group = region)) + 
-    geom_line(aes(color = region)) 
+    geom_line(aes(color = region)) +
+  geom_point(aes(color = region))
 
 ```
 
 ```{r}
-
+data_gdp <- read_excel("data/GDPpercapita.xls", range = anchored("A4", dim = c(265,64))) %>% 
+  select("Country Name", 
+         "Country Code", 
+         "2000":"2019") %>% 
+  rename("country_name" = "Country Name",
+         "country_code" = "Country Code") %>% 
+  pivot_longer(cols = "2000":"2019",
+               names_to = "year",
+               values_to = "GDPpercapita")
 
 ```
 
