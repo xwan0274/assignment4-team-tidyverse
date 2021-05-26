@@ -2,15 +2,18 @@
 title: "xxxxxxx"
 output: 
   flexdashboard::flex_dashboard:
+    theme:
+      version: 4
+      bootswatch: sketchy
     orientation: rows
     vertical_layout: fill
     source_code: embed
 ---
 
 ```{r setup, include=FALSE}
-# install.packages(c("tidyverse", "readxl", "plotly", "ggmap"))
 library(flexdashboard)
 library(ggplot2)
+library(naniar)
 library(readxl)
 library(tidyverse)
 library(plotly)
@@ -18,6 +21,8 @@ library(ggmap)
 library(gganimate)
 library(gifski)
 library(png)
+# install.packages("bslib")
+library(bslib)
 ```
 
 
@@ -31,54 +36,230 @@ Inputs {.sidebar data-width=400}
 
 
 
+
+Row{data-height=150}
+--------------------------------------
+
+### XXXXX
+
+![](https://media.giphy.com/media/3otO6zntMrmhpvaYX6/giphy.gif)
+
+
+
 Row{data-height=600}
 --------------------------------------
 
 ### Introduction
 
+XXXXXXXXXXXXXXXXXXXXXx
 
 
-
-
-
-Row
---------------------------------------
-
-### XXXXX
-
-insert gif
-
-
-
-Section 1 {data-icon="ion-android-search"}
-=============================
-Row{data-width=150}
---------------------------------------
-
-### ???
-```{r rw}
-
-valueBox(value = "1", icon = "ion-university",caption = "XXXXXXX",color = "green")
+```{r, include=FALSE}
+excel_sheets("data/API_4_DS2_en_excel_v2_2252569.xls")
+data_income <- read_excel("data/CLASS.xls", range = anchored("C5", dim = c(220,5))) %>% 
+  select(-X) %>% 
+  filter(Economy != "x")
 ```
 
-Row
+```{r, include=FALSE}
+df<- read_excel("Data/API_4_DS2_en_excel_v2_2252569.xls", sheet = 1, range = "A4:BM42772") %>% 
+  select("Country Name", 
+         "Country Code",
+         "Indicator Name", 
+         "2000":"2019") %>% 
+  rename("country_name" = "Country Name",
+         "indicator" = "Indicator Name",
+         "country_code" = "Country Code")
+```
+
+```{r, include=FALSE}
+df %>%
+  group_by(country_name) %>%
+  miss_var_summary() %>% 
+  arrange(-pct_miss)
+```
+
+```{r}
+df_filter <- df %>% 
+  filter(!(country_name %in% c("Faroe Islands",
+                          "Greenland",
+                          "Isle of Man",
+                          "Not classified",
+                          "St. Martin (French part)",
+                          "Northern Mariana Islands",
+                          "Kosovo",
+                          "American Samoa",
+                          "Gibraltar",
+                          "Sint Maarten (Dutch part)",
+                          "Turks and Caicos Islands",
+                          "Channel Islands",
+                          "Guam",
+                          "French Polynesia",
+                          "Curacao",
+                          "New Caledonia",
+                          "Virgin Islands (U.S.)",
+                          "Nauru",
+                          "Palau",
+                          "Somalia",
+                          "Guinea-Bissau")))
+       
+```
+
+```{r, include=FALSE}
+data_joined <- df_filter %>% 
+    left_join(data_income, by = c("country_name" = "Economy",
+                                "country_code" = "Code")) 
+```
+
+
+
+
+
+
+Literacy Rate {data-icon="ion-android-search"}
+=============================
+Row{data-height=150}
+--------------------------------------
+
+### Literacy Rate for Adult and Youth
+```{r rw}
+valueBox(value = "Literacy Rate for Adult and Youth 📚", icon = "ion-university", caption = "GLobal - Reginal - Income Levels", color = "skyblue")
+```
+
+
+Row{data-height=500}
 ----------------------------------
 
-### ?????
-```{r}
+### Global Literacy Rate
 
-
+```{r longdata-my}
+# filter and pivot data to longer form
+lit_long <- data_joined %>% 
+  filter(str_detect(indicator, "Literacy")) %>% 
+  filter(str_detect(indicator, "total")) %>% 
+  pivot_longer(cols = c("2000":"2019"),
+               names_to = "year",
+               values_to = "rate")
+# remove strings in indicator variable
+lit_long$indicator <- lit_long$indicator %>% 
+  substring(16) %>%
+  str_remove("\\(") %>% 
+  str_remove("\\)") %>% 
+  str_remove("\\%") %>% 
+  str_remove("total  of people ")
 ```
+
+```{r plot1my, eval = FALSE, catche = TRUE}
+# animation
+plot1 <- lit_long %>% 
+  filter(country_name == "World") %>% 
+  ggplot(aes(x = year,
+             y = rate,
+             fill = indicator)) +
+  geom_col(position = "dodge", width = 0.7) +
+  theme_light() +
+  ylim(0, 100) +
+  theme(axis.text.x = element_text(angle = 60, vjust = 0.5, hjust=0.5)) +
+  scale_fill_brewer(palette = "Paired") +
+  labs(x = "Year",
+       y = "Literacy Rate",
+       fill = "Age") +
+  ggtitle("Global Literacy Rate for Adult and Youth between 2000-2019") +
+  transition_time(as.numeric(year)) +
+  enter_grow() +
+  shadow_mark(past = TRUE)
+
+animate(plot1, fps = 20, duration = 15, end_pause = 80)
+```
+
+
+Row{data-height=600}
+----------------------------------
+
+
+### Regional Literacy Rate
+
+```{r plot2my, eval = FALSE, catche = TRUE}
+# animation
+plot2 <- lit_long %>% 
+  filter(country_name %in% c("Central Europe and the Baltics",
+                             "East Asia & Pacific",
+                             "Europe & Central Asia",
+                             "Latin America & Caribbean",
+                             "Middle East & North Africa",
+                             "South Asia",
+                             "Sub-Saharan Africa")) %>% 
+  group_by(indicator) %>% 
+  ggplot(aes(x = year,
+             y = rate,
+             group = country_name,
+             color = country_name)) +
+  geom_line() +
+  facet_wrap(~indicator) +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5)) +
+  scale_colour_brewer(palette = "Paired") +
+  labs(x = "Year",
+       y = "Literacy Rate",
+       color = "Regions") +
+  ggtitle("Literacy Rate for Adult and Youth in Differenet Regions") +
+  transition_reveal(as.numeric(year)) +
+  enter_grow() +
+  shadow_mark(past = TRUE)
+
+animate(plot2, fps = 20, duration = 8, end_pause = 80)
+```
+
+
+### Literacy Rate for Different Income Groups
+
+```{r plot3my, eval = FALSE, catche = TRUE}
+# animation
+plot3 <- lit_long %>% 
+  filter(country_name %in% c("Low income",
+                             "Lower middle income",
+                             "Middle income",
+                             "Upper middle income")) %>% 
+  ggplot(aes(x = year,
+             y = rate,
+             fill = indicator)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~country_name, 
+             ncol = 2) +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5)) +
+  scale_fill_brewer(palette = "Paired") +
+  labs(x = "Year",
+       y = "Literacy Rate",
+       fill = "Age") +
+  ggtitle("Literacy Rate for Adult and Youth in Differenet Income Groups")  +
+  transition_time(as.numeric(year)) +
+  enter_grow() +
+  shadow_mark(past = TRUE)
+  
+animate(plot3, fps = 20, duration = 20, end_pause = 80)
+```
+
+
 
 
 Section 2 {data-icon="ion-android-search"}
 =============================
-Row{data-width=150}
+Row{data-height=150}
 --------------------------------------
+
+
 ### ???
 ```{r}
-
 valueBox(value = 2,icon = "ion-university",caption = "???", color = "orange")
+```
+
+
+Row
+--------------------------------------
+
+```{r}
+
 ```
 
 
@@ -86,7 +267,7 @@ valueBox(value = 2,icon = "ion-university",caption = "???", color = "orange")
 
 Section 3 {data-icon="ion-android-search"}
 =============================
-Row{data-width=150}
+Row{data-height=150}
 --------------------------------------
 
 ### ???
@@ -108,7 +289,7 @@ Row
 
 Section 4 {data-icon="ion-android-search"}
 =============================
-Row{data-width=150}
+Row{data-height=150}
 --------------------------------------
 
 ### ???
