@@ -316,7 +316,56 @@ map_zb <- data1_zb_wm %>%
 ggplotly(map_zb)
 ```
 
+### **Government expenditure on education by income group**
 
+```{r plot2-zb, fig.cap = "Government expenditure on education (% of GDP), by income group"}
+data2_zb <- data_zb %>% 
+  filter(year != "2019") %>% 
+  group_by(income_group, year) %>% 
+  summarise(mean = mean(ex_total_GDP, na.rm = TRUE))
+
+plot2zb <- ggplot(data2_zb, aes(x=year, y=mean, group = income_group)) + 
+    geom_line(aes(color = income_group)) +
+  geom_point(aes(color = income_group))
+
+ggplotly(plot2zb)
+```
+
+### **Government expenditure on education by region**
+
+```{r plot3-zb, fig.cap = "Government expenditure on education (% of GDP), by region"}
+data3_zb <- data_zb %>% 
+  filter(year != "2019",
+         region != "North America") %>% 
+  group_by(region, year) %>% 
+  summarise(mean = mean(ex_total_GDP, na.rm = TRUE)) 
+plot3zb <- data3_zb %>% 
+  ggplot(aes(x=year, y=mean, group = region)) + 
+    geom_line(aes(color = region)) +
+  geom_point(aes(color = region))
+
+ggplotly(plot3zb)
+```
+
+### **Government expenditure on education by income group**
+```{r plot4-zb, fig.cap = "Government expenditure on education (% of GDP), by income group, in 2000 and 2015"}
+data_zb %>% 
+  filter(year != "2019") %>% 
+  group_by(income_group, year) %>% 
+  summarise(mean = mean(ex_total_GDP, na.rm = TRUE)) %>% 
+  pivot_wider(names_from = year,
+              values_from = mean) %>% 
+  select(income_group, "2000", "2015") %>% 
+  mutate(change = (`2015` - `2000`)/`2000`*100) %>% 
+  kable(col.names = c("Income groups", 
+                      "2000",
+                      "2015",
+                      "Percentage change"),
+        align = "c",
+        caption = "Total government expenditure on educationby income group in 2000 and 2015",
+        digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
 
 
 Children Out of School {data-icon="ion-android-search"}
