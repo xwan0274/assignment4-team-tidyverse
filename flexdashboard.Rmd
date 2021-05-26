@@ -521,8 +521,6 @@ Column {.sidebar data-width=400}
   * Percentage of male primary-school-aged children who are out of school is slightly higher than female in Europe & Central Asia and Latin America & Caribbean in 2019
 
 
-
-
 Section 4 {data-icon="ion-android-search"}
 =============================
 Row{data-height=150}
