@@ -168,7 +168,8 @@ os_clean <- outsch %>%
             by = c("country_name" = "Region")) %>% 
   select(-c(country_code, Region, `Income group.x`)) %>% 
   rename("region" = country_name,
-         "income_group" = `Income group.y`)
+         "income_group" = `Income group.y`) %>% 
+  mutate(year = as.numeric(year))
 
 os_clean <- unique(os_clean[ , 1:5])
 ```
@@ -177,7 +178,7 @@ Figure \@ref(fig:plot1xw) shows that among all of the seven regions, Sub-Saharan
 
 ```{r plot1xw, fig.cap="Percentage of children out of school in primary school age"}
 os_clean %>% 
-  ggplot(aes(x = as.numeric(year), y = `children_out_of_school_tot_%`, colour = region)) +
+  ggplot(aes(x = year, y = `children_out_of_school_tot_%`, colour = region)) +
   geom_line() +
   labs(x = "Year", y = "Percentage") +
   scale_fill_brewer(palette="Paired") +
@@ -198,7 +199,7 @@ To have a deeper understanding, Figure \@ref(fig:plot1xw) explores the differenc
 
 ```{r plot2xw, fig.cap="Percentage of children out of school in primary school age by gender", warning=FALSE}
 os_gender %>% 
-ggplot(aes(x= as.numeric(year), y = percentage, fill = gender)) +
+ggplot(aes(x= year, y = percentage, fill = gender)) +
   facet_wrap(~region,
              ncol = 2) +
   geom_bar(stat = "identity",
