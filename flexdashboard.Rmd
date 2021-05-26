@@ -273,16 +273,66 @@ Row{data-height=150}
 valueBox(value = "Percentage of children out of primary school 🧒", icon = "walk-outline", caption = "Regional - Gender Differnce", color = "olive")
 ```
 
+Row {.tabset data-height=700}
+----------
+
+### **Percentage of Children Out of School - Total**
+```{r fig.align= 'center', fig.width= 7}
+df_outsch <- data_joined %>% 
+  filter(indicator %in% c("Children out of school (% of primary school age)",
+                          "Children out of school, male (% of male primary school age)",
+                          "Children out of school, female (% of female primary school age)")) %>% 
+  pivot_longer(cols = "2000":"2019",
+               names_to = "year",
+               values_to = "value") %>% 
+  pivot_wider(id_cols = -indicator,
+              names_from = indicator,
+              values_from = value) %>% 
+  rename("children_out_of_school_tot_%" = `Children out of school (% of primary school age)`,
+         "children_out_of_school_m_%" = `Children out of school, male (% of male primary school age)`,
+         "children_out_of_school_f_%" = `Children out of school, female (% of female primary school age)`)
+
+outsch <- df_outsch %>% 
+  filter(country_name %in% c("East Asia & Pacific",
+                             "Europe & Central Asia",
+                             "Latin America & Caribbean",
+                             "Middle East & North Africa",
+                             "North America",
+                             "South Asia",
+                             "Sub-Saharan Africa")) 
+
+income_level <- data_income %>% 
+  select(Region,`Income group`)
+
+os_clean <- outsch %>% 
+  left_join(income_level,
+            by = c("country_name" = "Region")) %>% 
+  select(-c(country_code, Region, `Income group.x`)) %>% 
+  rename("region" = country_name,
+         "income_group" = `Income group.y`) %>% 
+  mutate(year = as.numeric(year))
+
+os_clean <- unique(os_clean[ , 1:5])
+
+plot1_cos <- os_clean %>% 
+  ggplot(aes(x = year, y = `children_out_of_school_tot_%`, colour = region)) +
+  geom_line() +
+  labs(x = "Year", y = "Percentage") +
+  scale_fill_brewer(palette="Paired") +
+  theme_light() 
+
+ggplotly(plot1_cos)
+```   
 
 
-Row
-----------------------------------
-
-### Number of Offences by Gender
-```{r}
 
 
-```
+
+
+
+
+
+
 
 
 Section 4 {data-icon="ion-android-search"}
