@@ -250,25 +250,16 @@ Row{data-height=150}
 --------------------------------------
 
 
-### World map
+### **Government expenditure on education (% of GDP)**
 ```{r}
 valueBox(value = "Government expenditure on education, total (% of GDP) 🏫", icon = "ion-university", caption = "Average government expenditure on education (% of GDP), 2000-2019", color = "orange")
 ```
 
 
-Row
+Row {.tabset data-height=700}
 --------------------------------------
 
 ```{r}
-data_gdp <- read_excel("data/GDPpercapita.xls", range = anchored("A4", dim = c(265,64))) %>% 
-  select("Country Name", 
-         "Country Code", 
-         "2000":"2019") %>% 
-  rename("country_name" = "Country Name",
-         "country_code" = "Country Code") %>% 
-  pivot_longer(cols = "2000":"2019",
-               names_to = "year",
-               values_to = "GDPpercapita")
 data_zb <- data_joined %>% 
   pivot_longer(cols = c("2000":"2019"),
                names_to = "year",
@@ -308,6 +299,23 @@ data_zb$country_name[which(data_zb$country_name == "Egypt, Arab Rep.")] = "Egypt
 data_zb <- data_zb %>% 
   left_join(data_gdp, by = c("country_name", "country_code", "year"))
 ```
+### **Government expenditure on education (% of GDP), 2000-2019**
+```{r plot1-zb, fig.cap = "Government expenditure on education (% of GDP), 2000-2019"}
+data1_zb <- data_zb %>% 
+  group_by(country_name) %>% 
+  summarise(mean = mean(ex_total_GDP, na.rm = TRUE))
+world_map <- map_data("world")
+data1_zb_wm <- world_map %>% 
+  left_join(data1_zb, by = c("region" = "country_name"))
+map_zb <- data1_zb_wm %>% 
+  ggplot(aes(long, lat, group = group))+
+  geom_polygon(aes(fill = mean), color = "white")+
+  scale_fill_viridis_c(option = "C") +
+  ggtitle("World map", subtitle = "Average government expenditure on education (% of GDP), 2000-2019")
+
+ggplotly(map_zb)
+```
+
 
 
 
@@ -316,7 +324,7 @@ Children Out of School {data-icon="ion-android-search"}
 Row{data-height=150}
 --------------------------------------
 
-### Percentage of children out of primary school
+### **Percentage of children out of primary school**
 ```{r}
 valueBox(value = "Percentage of children out of primary school 🏫", icon = "ion-university", caption = "Regional - Gender Differnce", color = "green")
 ```
