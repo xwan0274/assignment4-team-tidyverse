@@ -124,6 +124,9 @@ data_joined <- df_filter %>%
 
 \section*{Zoljargal}
 
+In this section we will discuss education expenditure across different countries in time period of 2000 to 2019. The indicator we have chosen to analyze in this section is:
+ -  Government expenditure on education, total (% of GDP). General government expenditure on education (current, capital, and transfers) is expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. 
+
 ```{r}
 data_gdp <- read_excel("data/GDPpercapita.xls", range = anchored("A4", dim = c(265,64))) %>% 
   select("Country Name", 
@@ -193,8 +196,11 @@ data1_zb_wm <- world_map %>%
 data1_zb_wm %>% 
   ggplot(aes(long, lat, group = group))+
   geom_polygon(aes(fill = mean), color = "white")+
-  scale_fill_viridis_c(option = "C") 
+  scale_fill_viridis_c(option = "C") +
+  ggtitle("World map", subtitle = "Average government expenditure on education (% of GDP), 2000-2019")
+
 ```
+Figure \@ref(fig:plot1-zb), provides an overview of spending on education by country. To produce the figure, we calculated average spending over the time period for each country. The average government spending on education across countries ranged between 1.2% - 11.5% of their GDP.
 
 ```{r plot2-zb, fig.cap = "Government expenditure on education (% of GDP), by income group"}
 data2_zb <- data_zb %>% 
@@ -229,9 +235,11 @@ data_zb %>%
   pivot_wider(names_from = year,
               values_from = mean) %>% 
   select(income_group, "2000", "2015") %>% 
+  mutate(change = (`2015` - `2000`)/`2000`*100) %>% 
   kable(col.names = c("Income groups", 
                       "2000",
-                      "2015"),
+                      "2015",
+                      "Percentage change"),
         align = "c",
         caption = "Total government expenditure on educationby income group in 2000 and 2015",
         digits = 2) %>% 
