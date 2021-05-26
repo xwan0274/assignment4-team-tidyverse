@@ -213,6 +213,8 @@ ggplot(data2_zb, aes(x=year, y=mean, group = income_group)) +
   geom_point(aes(color = income_group))
 ```
 
+Then we looked at the government expenditure on education by income group over time in Figure \@ref(fig:plot2-zb). What evident on the graph is that the low income countries are devoted much lesser proportion of their GDP but also we can see that spending has increased on average for those countries. On the other hand, high income countries spending more share of their GDP roughly between 4.5% to 5%. However the data had many missing values, a broad upward trend can be observed from the Figure \@ref(fig:plot2-zb).
+
 ```{r plot3-zb, fig.cap = "Government expenditure on education (% of GDP), by region"}
 data3_zb <- data_zb %>% 
   filter(year != "2019",
@@ -226,6 +228,15 @@ data3_zb %>%
   geom_point(aes(color = region))
 
 ```
+
+Cross-country spending patters
+
+When did the provision of education first become a public policy priority?
+
+Governments around the world are nowadays widely perceived to be responsible for ensuring the provision of accessible quality education. The advancement of the idea to provide education for more and more children only began in the mid 19th century, when most of today’s industrialized countries started expanding primary education.
+
+The visualization, plotting public expenditure on education as a share of Gross Domestic Product (GDP) for a number of early-industrialized countries, shows that this expansion took place mainly through public funding.12
+The last two decades have seen a small but general increase in the share of income that countries devote to education. The chart plots trends in public expenditure on education as a share of GDP. As usual, a selection of countries is shown by default, but other countries can be added by clicking on the relevant option at the top of the chart. Although the data is highly irregular due to missing observations for many countries, we can still observe a broad upward trend for the majority of countries. Specifically, it can be checked that of the 88 countries with available data for 2000/2010, three-fourths increased education spending as a share of GDP within this decade. As incomes – measured by GDP per capita – are generally increasing around the world, this means that the total amount of global resources spent on education is also increasing in absolute terms.
 
 ```{r plot4-zb, fig.cap = "Government expenditure on education (% of GDP), by income group, in 2000 and 2015"}
 data_zb %>% 
@@ -246,6 +257,7 @@ data_zb %>%
   kable_styling(bootstrap_options = c("striped", "hover"))
 
 ```
+
 
 ```{r}
 
