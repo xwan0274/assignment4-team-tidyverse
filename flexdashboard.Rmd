@@ -116,22 +116,21 @@ data_joined <- df_filter %>%
 
 
 
-
 Literacy Rate {data-icon="ion-android-search"}
 =============================
 Row{data-height=150}
---------------------------------------
+----------------------------------
 
-### Literacy Rate for Adult and Youth
-```{r rw}
-valueBox(value = "Literacy Rate for Adult and Youth 📚", icon = "ion-university", caption = "GLobal - Reginal - Income Levels", color = "skyblue")
+### **Literacy Rate for Adult and Youth**
+```{r}
+valueBox(value = "Literacy Rate for Adult and Youth 📚", icon = "ion-university", caption = "Global - Regional - Income Levels", color = "skyblue")
 ```
 
 
-Row{data-height=500}
-----------------------------------
+Row {.tabset data-height=700}
+--------------------------------------
 
-### Global Literacy Rate
+### **Global Literacy Rate**
 
 ```{r longdata-my}
 # filter and pivot data to longer form
@@ -174,11 +173,8 @@ animate(plot1, fps = 20, duration = 15, end_pause = 80)
 ```
 
 
-Row{data-height=600}
-----------------------------------
 
-
-### Regional Literacy Rate
+### **Regional Literacy Rate**
 
 ```{r plot2my, eval = FALSE, catche = TRUE}
 # animation
@@ -212,7 +208,8 @@ animate(plot2, fps = 20, duration = 8, end_pause = 80)
 ```
 
 
-### Literacy Rate for Different Income Groups
+
+### **Literacy Rate for Different Income Groups**
 
 ```{r plot3my, eval = FALSE, catche = TRUE}
 # animation
@@ -241,7 +238,26 @@ plot3 <- lit_long %>%
 animate(plot3, fps = 20, duration = 20, end_pause = 80)
 ```
 
+Column {.sidebar data-width=400}
+--------------------------------------
+> Key Findings
 
+* Global 
+
+  * There was a slow and steady increase in literacy rate for adult aged 15 and above and youth aged 15-24 globally over the years.
+
+* Regional
+
+  * There was a significant increase in the literacy rate in adult aged 15 and above in Middle East & North Africa, South Asia and Sub-Saharan Africa.
+  * South Asia and Sub-Saharan Africa also had improved the literacy rate tremendously in the youth age group over the years.
+  * Both East Asia & Pacific and Latin America & Caribbean had an 5% increase in literacy rate in the adult group where as the literacy rate increase approximately 4% in the youth group in Latin America & Caribbean and a small increase in the youth group in East Asia & Pacific. 
+  * Central Europe and the Baltics and Europe & Central Asia had maintained a high literacy rate in both age groups over the years..
+
+* Different income levels
+  
+  * Both adult and youth groups that have higher income tend to have higher a level of literacy skills.
+
+* Conclusion
 
 
 Education spending {data-icon="ion-android-search"}
