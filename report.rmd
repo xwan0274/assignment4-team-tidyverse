@@ -156,8 +156,61 @@ new_name = c("ex_total_GDP",
              "ex_per_student_primary")
 
 for(i in 1:6) names(data_zb)[names(data_zb) == selected_indicators[i]] = new_name[i]
+
+data_zb$country_name[which(data_zb$country_name == "United States")] = "USA"
+data_zb$country_name[which(data_zb$country_name == "United Kingdom")] = "UK"
+data_zb$country_name[which(data_zb$country_name == "Russian Federation")] = "Russia"
+data_zb$country_name[which(data_zb$country_name == "Iran, Islamic Rep.")] = "Iran"
+data_zb$country_name[which(data_zb$country_name == "Congo, Rep.")] = "Democratic Republic of the Congo"
+data_zb$country_name[which(data_zb$country_name == "Venezuela, RB")] = "Venezuela"
+data_zb$country_name[which(data_zb$country_name == "Yemen, Rep.")] = "Yemen"
+data_zb$country_name[which(data_zb$country_name == "Egypt, Arab Rep.")] = "Egypt"
 ```
 
+```{r plot1-zb fig.cap = "Government expenditure on education (% of GDP), 2000-2019"}
+data1_zb <- data_zb %>% 
+  group_by(country_name) %>% 
+  summarise(mean = mean(ex_total_GDP, na.rm = TRUE))
+
+world_map <- map_data("world")
+
+data1_zb_wm <- world_map %>% 
+  left_join(data1_zb, by = c("region" = "country_name"))
+
+data1_zb_wm %>% 
+  ggplot(aes(long, lat, group = group))+
+  geom_polygon(aes(fill = mean), color = "white")+
+  scale_fill_viridis_c(option = "C") 
+```
+
+```{r}
+data2_zb <- data_zb %>% 
+  filter(year != "2019") %>% 
+  group_by(income_group, year) %>% 
+  summarise(mean = mean(ex_total_GDP, na.rm = TRUE))
+
+ggplot(data2_zb, aes(x=year, y=mean, group = income_group)) + 
+    geom_line(aes(color = income_group)) +
+  geom_point()
+```
+
+```{r}
+data3_zb <- data_zb %>% 
+  filter(year != "2019",
+         region != "North America") %>% 
+  group_by(region, year) %>% 
+  summarise(mean = mean(ex_total_GDP, na.rm = TRUE)) 
+
+data3_zb %>% 
+  ggplot(aes(x=year, y=mean, group = region)) + 
+    geom_line(aes(color = region)) 
+
+```
+
+```{r}
+
+
+```
 
 \section*{Xinrui}
 
