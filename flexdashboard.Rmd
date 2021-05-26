@@ -263,18 +263,16 @@ Row
 ```
 
 
-
-
-Section 3 {data-icon="ion-android-search"}
+Children Out of School {data-icon="ion-android-search"}
 =============================
 Row{data-height=150}
 --------------------------------------
 
-### ???
-```{r}
-
-valueBox(value = 2,icon = "ion-university",caption = "???", color = "coral")
+### Percentage of children out of primary school
+```{r rw}
+valueBox(value = "Percentage of children out of primary school 🧒", icon = "walk-outline", caption = "Regional - Gender Differnce", color = "olive")
 ```
+
 
 
 Row
