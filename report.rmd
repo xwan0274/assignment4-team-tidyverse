@@ -180,7 +180,7 @@ data_zb <- data_zb %>%
   left_join(data_gdp, by = c("country_name", "country_code", "year"))
 ```
 
-```{r plot1-zb fig.cap = "Government expenditure on education (% of GDP), 2000-2019"}
+```{r plot1-zb, fig.cap = "Government expenditure on education (% of GDP), 2000-2019"}
 data1_zb <- data_zb %>% 
   group_by(country_name) %>% 
   summarise(mean = mean(ex_total_GDP, na.rm = TRUE))
@@ -196,7 +196,7 @@ data1_zb_wm %>%
   scale_fill_viridis_c(option = "C") 
 ```
 
-```{r}
+```{r plot2-zb, fig.cap = "Government expenditure on education (% of GDP), by income group"}
 data2_zb <- data_zb %>% 
   filter(year != "2019") %>% 
   group_by(income_group, year) %>% 
@@ -207,7 +207,7 @@ ggplot(data2_zb, aes(x=year, y=mean, group = income_group)) +
   geom_point(aes(color = income_group))
 ```
 
-```{r}
+```{r plot3-zb, fig.cap = "Government expenditure on education (% of GDP), by region"}
 data3_zb <- data_zb %>% 
   filter(year != "2019",
          region != "North America") %>% 
@@ -221,7 +221,7 @@ data3_zb %>%
 
 ```
 
-```{r}
+```{r plot4-zb, fig.cap = "Government expenditure on education (% of GDP), by income group, in 2000 and 2015"}
 data_zb %>% 
   filter(year != "2019") %>% 
   group_by(income_group, year) %>% 
