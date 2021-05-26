@@ -151,7 +151,7 @@ lit_long %>%
   theme(axis.text.x = element_text(angle = 60, vjust = 0.5, hjust=0.5)) +
   scale_fill_brewer(palette = "Paired") +
   labs(x = "Year",
-       y = "Literacy rate",
+       y = "Literacy Rate",
        fill = "Age") +
   ggtitle("Global Literacy Rate for Adult and Youth between 2000-2019")
   
@@ -190,12 +190,12 @@ lit_long %>%
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5)) +
   scale_colour_brewer(palette = "Paired") +
   labs(x = "Year",
-       y = "Literacy rate",
+       y = "Literacy Rate",
        color = "Regions") +
   ggtitle("Literacy Rate for Adult and Youth in Differenet Regions")
 ```
 
-As the figure \@ref(fig:regions-my) shown above, there was a significant increase in the literacy rate in adult aged 15 and above in Middle East & North Africa, South Asia and Sub-Saharan Africa. South Asia and Sub-Saharan Africa also had improved the literacy rate tremendously in the youth age group over the years. Both East Asia & Pacific and Latin America & Caribbean had an 5% increase in literacy rate in the adult group where as the literacy rate increase approximately 4% in the youth group in Latin America & Caribbean and a small increase in the youth group in East Asia & Pacific. Regions like Central Europe and the Baltics and Europe & Central Asia had maintained a high literacy rate in both age groups over the years.
+As the figure \@ref(fig:regions-my) shown above, there was a significant increase in the literacy rate in adult aged 15 and above in Middle East & North Africa, South Asia and Sub-Saharan Africa. South Asia and Sub-Saharan Africa also had improved the literacy rate tremendously in the youth age group over the years. Both East Asia & Pacific and Latin America & Caribbean had an 5% increase in literacy rate in the adult group where as the literacy rate increase approximately 4% in the youth group in Latin America & Caribbean and a small increase in the youth group in East Asia & Pacific. Regions like Central Europe and the Baltics and Europe & Central Asia had maintained a high literacy rate in both age groups over the years. Developed countries have better education facilities and system than developing countries, they tend to have higher literacy rate over the years.
 
 
 
@@ -215,12 +215,13 @@ lit_long %>%
              labeller = label_wrap_gen(width = 18)) +
   theme_light() +
   scale_fill_brewer(palette = "Paired") +
-  labs(x = "Literacy rate",
+  labs(x = "Literacy Rate",
        y = "Year",
        color = "Age") +
   ggtitle("Literacy Rate for Adult and Youth in Differenet Income Groups")
 ```
 
+Figure \@ref(fig:income-my) demonstrates that both adult and youth groups that have higher income tend to have higher literacy rate
 
 
 
