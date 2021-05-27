@@ -143,11 +143,11 @@ df_xq <- data_joined %>%
   
 
   
-```{r warning=FALSE}  
+```{r Figure1, warning=FALSE}  
 df2 <- df_xq %>%
   group_by(Indicator, Region)
   
-  time_seriess <- ggplot(df2, aes(x = year,
+  time_figure <- ggplot(df2, aes(x = year,
              y = value,
              fill = Indicator)) +
   geom_col(alpha = 0.8, width = 0.85, position = "fill") +
@@ -172,7 +172,7 @@ df2 <- df_xq %>%
     panel.grid.major.y = element_blank(),
   )
 
-plotly::ggplotly(time_seriess)
+plotly::ggplotly(time_figure)
 ```  
   
 highest/ lowest
@@ -191,9 +191,30 @@ df1
 Table \@ref(tab:Table1) indicates that worldwide pupil-teacher ratio has a greatest average ratio of 24.74901 in the primary level and a lowest average ratio of 15.57764 in the upper secondary level between 2000 to 2019, holding other variables constant.
   
   
+```{r Figure2, warning=FALSE}
 
+library(ggthemes)
+df3 <- df_xq %>%
+  select("Indicator", "Income_group", "value", "Region") %>%
+  group_by(Income_group, Indicator, Region) %>%
+  summarise(Average_ratio = mean(value, na.rm = TRUE)) 
+
+region_ratio <- ggplot(df3, aes(x = Average_ratio,
+                      y = Indicator,
+                      fill = Income_group,
+                      color = Income_group)) +
+  geom_col() +
+  facet_wrap( ~ Region) +
+  theme_economist() +
+  scale_fill_manual(values = economist_pal(fill = TRUE)(4)) +
+  scale_color_manual(values = economist_pal(fill = TRUE)(4)) +
+  ggtitle("Average pupil-teacher ratio on each income group across regions") 
   
+plotly::ggplotly(region_ratio)
+
+```
   
+  North America only records high income group.
   
 
 
@@ -209,4 +230,3 @@ Table \@ref(tab:Table1) indicates that worldwide pupil-teacher ratio has a great
 
 
 \section*{Conclusion}
-
