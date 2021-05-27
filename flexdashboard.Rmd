@@ -537,23 +537,19 @@ Column {.sidebar data-width=400}
   * Percentage of male primary-school-aged children who are out of school is slightly higher than female in Europe & Central Asia and Latin America & Caribbean in 2019
 
 
-Section 4 {data-icon="ion-android-search"}
+Pupil-student ratio {data-icon="ion-android-search"}
 =============================
 Row{data-height=150}
 --------------------------------------
 
-### ???
+### **Pupil-teacher ratio**
 ```{r}
-
-valueBox(value = 2,icon = "ion-university",caption = "???", color = "coral")
+valueBox(value = "Pupil-teacher ratio", icon = "ion-university", caption = "Regional - Income Group - Education level, 2000-2019", color = "coral")
 ```
 
 
-Row
+Row {.tabset data-height=700}
 ----------------------------------
 
-### Number of Offences by Gender
-```{r}
+### **Difference in Percentage by Gender**
 
-
-```
