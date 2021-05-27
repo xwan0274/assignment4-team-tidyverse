@@ -608,7 +608,7 @@ df1
 Table \@ref(tab:Table1) indicates that worldwide pupil-teacher ratio has a greatest average ratio of 24.74901 in the primary level and a lowest average ratio of 15.57764 in the upper secondary level between 2000 to 2019, holding other variables constant.
   
 ### **Regional Lowest Average Pupil-teacher ratio**
-```{r Table1}
+```{r Table2}
  df3 <- df_xq %>%
   group_by(Indicator, Region) %>%
   select(Indicator, Region, value) %>%
