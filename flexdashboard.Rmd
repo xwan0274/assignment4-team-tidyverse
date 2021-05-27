@@ -304,7 +304,7 @@ Column {.sidebar data-width=400}
 
 * Different income levels
   
-  * Both adult and youth groups that have higher income tend to have a higher level of literacy skills.
+  * Both adult and youth groups that have higher income tend to have higher level of literacy skills.
 
 
 
