@@ -34,14 +34,38 @@ Inputs {.sidebar data-width=400}
 
 ### Table of Contents
 
+1. Introduction
 
+2. Literacy Rate for Adult and Youth
+
+  * Global Literacy Rate
+  * Regional Literacy Rate
+  * Literacy Rate for Different Income Groups
+  
+3. Government Expenditure on Education (% of GDP)
+
+  * Government Expenditure on Education by Income Group
+  * Government Expenditure on Education by Region
+
+4. Percentage of Children Out of Primary School
+  
+  * Percentage of Children Out of Primary School by Region
+  * Percentage of Children Out of Primary School by Gender
+  
+5. Pupil-teacher Ratio (%) Across 2000-2019
+
+  * Worldwide Highest Average Pupil-teacher Ratio
+  * Worldwide Lowest Average Pupil-teacher Ratio
+  * Average Pupil-teacher Ratio by Income Group and Region
+  
+6. Conclusion
 
 
 
 Row{data-height=150}
 --------------------------------------
 
-### XXXXX
+###
 
 ![](https://media.giphy.com/media/3otO6zntMrmhpvaYX6/giphy.gif)
 
@@ -670,5 +694,10 @@ Column {.sidebar data-width=400}
   * Europe& Central Asia has similar average pupil-teacher ratio across region.
   * East Asia & Pacific and Latin America & Caribbean has similar average pupil-teacher ratio.
   
+  
 
+Conclusion {data-icon="layers-outline"}
+=============================
+Inputs {.sidebar data-width=400}
+-------------------------------------
 
