@@ -1,5 +1,5 @@
 ---
-title: "xxxxxxx"
+title: "Explore Global Eduation Situations"
 output: 
   flexdashboard::flex_dashboard:
     theme:
@@ -27,38 +27,38 @@ library(kableExtra)
 ```
 
 
-Overview {data-icon="fa-globe"}
+Introduction {data-icon="fa-globe"}
 =============================
 Inputs {.sidebar data-width=400}
 -------------------------------------
 
 ### Table of Contents
 
-1. Introduction
+* Introduction
 
-2. Literacy Rate for Adult and Youth
+* Literacy Rate for Adult and Youth
 
   * Global Literacy Rate
   * Regional Literacy Rate
   * Literacy Rate for Different Income Groups
   
-3. Government Expenditure on Education (% of GDP)
+* Government Expenditure on Education (% of GDP)
 
   * Government Expenditure on Education by Income Group
   * Government Expenditure on Education by Region
 
-4. Percentage of Children Out of Primary School
+* Percentage of Children Out of Primary School
   
   * Percentage of Children Out of Primary School by Region
   * Percentage of Children Out of Primary School by Gender
   
-5. Pupil-teacher Ratio (%) Across 2000-2019
+* Pupil-teacher Ratio (%) Across 2000-2019
 
   * Worldwide Highest Average Pupil-teacher Ratio
   * Worldwide Lowest Average Pupil-teacher Ratio
   * Average Pupil-teacher Ratio by Income Group and Region
   
-6. Conclusion
+* Conclusion
 
 
 
@@ -76,7 +76,32 @@ Row{data-height=600}
 
 ### Introduction
 
-XXXXXXXXXXXXXXXXXXXXXx
+**Purpose of this report: **
+
+Analysis the difference in education situations across various regions and income groups using data collected from 2000 and 2019, there are four key aspects discussed in this report:
+
+- Literacy rate of adults and youth
+- Discuss the Government Expenditure on Education in percentage of GDP
+- Percentage of primary-school-aged children out of school
+- Pupil-teacher ration
+
+**Data description: **
+
+Data sets used in this report are provided by the World Bank, which are [Education](https://data.worldbank.org/topic/education?end=2018&start=1998&view=chart) and [World Bank Country and Lending Groups](https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups). Both data sets falls under [Creative Commons Attribution 4.0 International license](https://datacatalog.worldbank.org/public-licenses) and are allowed to use for analysis purpose of this report.
+
+
+***
+
+**TEAM MEMBERS**
+
+|Name	                |Student Id|Email Address                |
+|:-------------------:|:--------:|:---------------------------:|
+|Mengyuan YANG        | 21374031 | myan0065@student.monash.edu |
+|Zoljargal BATSAIKHAN | 30392756 | zbat0001@student.monash.edu |
+|Xinrui WANG          | 23752599 | xwan0274@student.monash.edu |
+|Xueqi GOH            | 29619998 | xgoh0002@student.monash.edu |
+ 
+***
 
 
 ```{r, include=FALSE}
@@ -284,7 +309,7 @@ Column {.sidebar data-width=400}
 * Conclusion
 
 
-Education spending {data-icon="ion-android-search"}
+Education Expenditure {data-icon="ion-android-search"}
 =============================
 Row{data-height=150}
 --------------------------------------
@@ -292,7 +317,7 @@ Row{data-height=150}
 
 ### **Government expenditure on education (% of GDP)**
 ```{r}
-valueBox(value = "Government expenditure on education, total (% of GDP) 🏫", icon = "ion-university", caption = "Average government expenditure on education (% of GDP), 2000-2019", color = "orange")
+valueBox(value = "Government expenditure on education, total (% of GDP) 💰", icon = "ion-university", caption = "Average government expenditure on education (% of GDP), 2000-2019", color = "orange")
 ```
 
 
@@ -484,6 +509,7 @@ os_clean <- unique(os_clean[ , 1:5])
 
 plot1_cos <- os_clean %>% 
   ggplot(aes(x = year, y = `children_out_of_school_tot_%`, colour = region)) +
+  geom_point() +
   geom_line() +
   labs(x = "Year", y = "Percentage") +
   scale_fill_brewer(palette="Paired") +
@@ -561,14 +587,14 @@ Column {.sidebar data-width=400}
   * Percentage of male primary-school-aged children who are out of school is slightly higher than female in Europe & Central Asia and Latin America & Caribbean in 2019
 
 
-Pupil-student ratio {data-icon="ion-android-search"}
+Pupil-teacher Ratio {data-icon="ion-android-search"}
 =============================
 Row{data-height=150}
 --------------------------------------
 
 ### **Pupil-teacher ratio**
 ```{r}
-valueBox(value = "Pupil-teacher ratio", icon = "ion-university", caption = "Regional - Income Group - Education level, 2000-2019", color = "coral")
+valueBox(value = "Pupil-teacher ratio 📈", icon = "ion-university", caption = "Regional - Income Group - Education level, 2000-2019", color = "coral")
 ```
 
 
@@ -696,7 +722,7 @@ Column {.sidebar data-width=400}
   
   
 
-Conclusion {data-icon="layers-outline"}
+Conclusion {data-icon="fa-globe"}
 =============================
 Inputs {.sidebar data-width=400}
 -------------------------------------
