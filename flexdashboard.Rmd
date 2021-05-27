@@ -552,7 +552,7 @@ Row {.tabset data-height=700}
 ----------------------------------
 
 ### **Pupil-teacher ratio (%) across 2000-2019**
-```{r fig.cap="Pupil-teacher ratio (%) between 2000-2019", fig.width=12, fig.height=6}
+```{r}
 df_xq <- data_joined %>%
    pivot_longer(cols = c("2000":"2019"),
                names_to = "year",
@@ -580,14 +580,15 @@ df2 <- df_xq %>%
   theme_minimal(base_family = "Roboto Condensed") +
   theme(
     plot.margin = margin(0.5, 0.5, 0.5, unit = "cm"),
-    plot.title = element_text(size = 15, face = "bold"),
+    plot.title = element_text(size = 15, face = "bold", hjust = 0.5),
     strip.text.y = element_text(angle = 270, face = "bold"),
     strip.placement = "outside",
     axis.title.x = element_text(margin = margin(t = 0.5, b = 0.5, unit = "cm")),
     axis.title.y = element_blank(),
     axis.text = element_text(size = 10),
     panel.grid.major.y = element_blank(),
-  )
+  ) +
+    ggtitle("Pupil-teacher ratio (%) between 2000-2019")
 
 plotly::ggplotly(time_figure)
 ```  
@@ -639,13 +640,14 @@ region_ratio <- ggplot(df3, aes(x = Average_ratio,
   theme_economist() +
   scale_fill_manual(values = economist_pal(fill = TRUE)(4)) +
   scale_color_manual(values = economist_pal(fill = TRUE)(4)) +
-  ggtitle("Average pupil-teacher ratio on each income group across regions") 
+  theme(text = element_text(size=5),
+        plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Average pupil-teacher ratio on different income group in each region")
   
 plotly::ggplotly(region_ratio)
 
 ```
   
-  North America only records high income group.
   
 Column {.sidebar data-width=400}
 --------------------------------------
