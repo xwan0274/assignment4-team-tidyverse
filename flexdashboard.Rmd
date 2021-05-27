@@ -552,7 +552,7 @@ Row {.tabset data-height=700}
 ----------------------------------
 
 ### **Pupil-teacher ratio (%) across 2000-2019**
-```{r filter data}
+```{r fig.cap="Pupil-teacher ratio (%) between 2000-2019", fig.width=12, fig.height=6}
 df_xq <- data_joined %>%
    pivot_longer(cols = c("2000":"2019"),
                names_to = "year",
