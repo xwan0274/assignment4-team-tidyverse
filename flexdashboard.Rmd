@@ -660,8 +660,8 @@ Column {.sidebar data-width=400}
 
 * From the tables (Highest/Lowest Average Pupil-teacher ratio)
 
-  *Holding other variable constant, the highest average ratio is 24.74901 in Sub-saharan Africa's primary level between 2000-2019
-   *Holding other variable constant, the lowest average ratio is 7.883399 in North America's lower-secondary level between 2000-2019
+  * Holding other variable constant, the highest average ratio is 24.74901 in Sub-saharan Africa's primary level between 2000-2019
+  * Holding other variable constant, the lowest average ratio is 7.883399 in North America's lower-secondary level between 2000-2019
 
 * From the second graph (Average pupil-teacher ratio on different income group in each region)
   
