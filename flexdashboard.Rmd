@@ -551,5 +551,106 @@ valueBox(value = "Pupil-teacher ratio", icon = "ion-university", caption = "Regi
 Row {.tabset data-height=700}
 ----------------------------------
 
-### **Difference in Percentage by Gender**
+### **Pupil-teacher ratio (%) across 2000-2019**
+```{r filter data}
+df_xq <- data_joined %>%
+   pivot_longer(cols = c("2000":"2019"),
+               names_to = "year",
+               values_to = "value") %>%
+ dplyr::filter(str_detect(indicator, 'Pupil-teacher ratio') & !str_detect(value, "NA") & !str_detect(Region, "NA")) %>%
+ rename("Income_group" = 'Income group',
+        "Indicator" = "indicator") 
+
+df2 <- df_xq %>%
+  group_by(Indicator, Region)
+  
+  time_figure <- ggplot(df2, aes(x = year,
+             y = value,
+             fill = Indicator)) +
+  geom_col(alpha = 0.8, width = 0.85, position = "fill") +
+  scale_fill_brewer(palette = "Dark2") +
+  scale_y_continuous(expand = c(0, 0.1)) +
+  coord_flip() +
+  
+  labs(
+    tittle = "Pupil-teacher ratio (%) between 2000-2019",
+    x = "Years",
+    y = "Pupil-teacher ratio (%)"
+  ) +
+  theme_minimal(base_family = "Roboto Condensed") +
+  theme(
+    plot.margin = margin(0.5, 0.5, 0.5, unit = "cm"),
+    plot.title = element_text(size = 15, face = "bold"),
+    strip.text.y = element_text(angle = 270, face = "bold"),
+    strip.placement = "outside",
+    axis.title.x = element_text(margin = margin(t = 0.5, b = 0.5, unit = "cm")),
+    axis.title.y = element_blank(),
+    axis.text = element_text(size = 10),
+    panel.grid.major.y = element_blank(),
+  )
+
+plotly::ggplotly(time_figure)
+```  
+  
+### **Worldwide Highest Average Pupil-teacher ratio**
+```{r Table1}
+ df1 <- df_xq %>%
+  group_by(Indicator, Region) %>%
+  select(Indicator, Region, value) %>%
+  summarise(Average_ratio = mean(value, na.rm = TRUE)) %>% 
+  arrange(-Average_ratio) %>% 
+  kable(caption =  "Average Pupil-teacher ratio between 2000-2019 in each Region") %>%
+  kable_styling (bootstrap_options = c("striped", "hover")) 
+  
+  
+df1
+```  
+Table \@ref(tab:Table1) indicates that worldwide pupil-teacher ratio has a greatest average ratio of 24.74901 in the primary level and a lowest average ratio of 15.57764 in the upper secondary level between 2000 to 2019, holding other variables constant.
+  
+### **Regional Lowest Average Pupil-teacher ratio**
+```{r Table1}
+ df3 <- df_xq %>%
+  group_by(Indicator, Region) %>%
+  select(Indicator, Region, value) %>%
+  summarise(Average_ratio = mean(value, na.rm = TRUE)) %>% 
+  arrange(Average_ratio) %>% 
+  kable(caption =  "Regional Average Pupil-teacher ratio between 2000-2019") %>%
+  kable_styling (bootstrap_options = c("striped", "hover")) 
+  
+  
+df3
+```    
+
+### **Average pupil-teacher ratio on each income group across regions**
+```{r Figure2, warning=FALSE}
+
+library(ggthemes)
+df3 <- df_xq %>%
+  select("Indicator", "Income_group", "value", "Region") %>%
+  group_by(Income_group, Indicator, Region) %>%
+  summarise(Average_ratio = mean(value, na.rm = TRUE)) 
+
+region_ratio <- ggplot(df3, aes(x = Average_ratio,
+                      y = Indicator,
+                      fill = Income_group,
+                      color = Income_group)) +
+  geom_col() +
+  facet_wrap( ~ Region) +
+  theme_economist() +
+  scale_fill_manual(values = economist_pal(fill = TRUE)(4)) +
+  scale_color_manual(values = economist_pal(fill = TRUE)(4)) +
+  ggtitle("Average pupil-teacher ratio on each income group across regions") 
+  
+plotly::ggplotly(region_ratio)
+
+```
+  
+  North America only records high income group.
+  
+Column {.sidebar data-width=400}
+--------------------------------------
+> Key Findings
+
+111
+
 
