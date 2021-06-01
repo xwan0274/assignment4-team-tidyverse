@@ -252,7 +252,7 @@ data_zb %>%
 ```
 As shown in Table \@ref(tab:plot4-zb), the increase in education spending is evident for the majority of countries. But it remained at the same level for the upper middle income countries.
 
-Overall, it can be concluded that the total amount of global resources spent on education is increasing over the world.
+Overall, it can be concluded that the total amount of global resources spent on education is increasing over the world. But according to the article \cite{trabelsi2018public}, it is suggested that if the governance is weak more public spending on education leads to lower growth. However, the improvement of the quality of institutions enhances the economic performance.
 
 \section*{Xinrui}
 
