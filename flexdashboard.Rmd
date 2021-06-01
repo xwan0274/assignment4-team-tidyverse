@@ -83,7 +83,7 @@ Analysis the difference in education situations across various regions and incom
 - Literacy rate of adults and youth
 - Discuss the Government Expenditure on Education in percentage of GDP
 - Percentage of primary-school-aged children out of school
-- Pupil-teacher ration
+- Pupil-teacher ratio
 
 **Data description: **
 
@@ -304,7 +304,7 @@ Column {.sidebar data-width=400}
 
 * Different income levels
   
-  * Both adult and youth groups that have higher income tend to have higher a level of literacy skills.
+  * Both adult and youth groups that have higher income tend to have higher level of literacy skills.
 
 
 
