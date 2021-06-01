@@ -122,7 +122,7 @@ data_joined <- df_filter %>%
 \section*{Mengyun}
 
 
-\section*{Zoljargal}
+\section*{Education expenditure trend over the world}
 
 In this section we will discuss education expenditure across different countries in time period of 2000 to 2019. The indicator we have chosen to analyze in this section is:
  -  Government expenditure on education, total (% of GDP). General government expenditure on education (current, capital, and transfers) is expressed as a percentage of Gross Domestic Product (GDP). It includes expenditure funded by transfers from international sources to government. 
@@ -213,7 +213,7 @@ ggplot(data2_zb, aes(x=year, y=mean, group = income_group)) +
   geom_point(aes(color = income_group))
 ```
 
-Then we looked at the government expenditure on education by income group over time in Figure \@ref(fig:plot2-zb). What evident on the graph is that the low income countries are devoted much lesser proportion of their GDP but also we can see that spending has increased on average for those countries. On the other hand, high income countries spending more share of their GDP roughly between 4.5% to 5%. However the data had many missing values, a broad upward trend can be observed from the Figure \@ref(fig:plot2-zb).
+Then we looked at the government expenditure on education by income group over time in Figure \@ref(fig:plot2-zb). What evident on the graph is that the low income countries have devoted much lesser proportion of their GDP but also we can see that spending has increased on average for those countries. On the other hand, high income countries spending more share of their GDP roughly between 4.5% to 5%. However the data had many missing values, a broad upward trend can be observed from the Figure \@ref(fig:plot2-zb).
 
 ```{r plot3-zb, fig.cap = "Government expenditure on education (% of GDP), by region"}
 data3_zb <- data_zb %>% 
@@ -229,7 +229,7 @@ data3_zb %>%
 
 ```
 
-In Figure \@ref(fig:plot3-zb), we visualized the education spending by regions. During the time period, South Asia and Sub-Saharan Africa had the lowest spending ranging between 3-4% but again, the plot shows upward trend for those regions. For the other regions, it has been relatively stable over time. 
+In Figure \@ref(fig:plot3-zb), we visualized the education spending by geographical regions. During the time period, South Asia and Sub-Saharan Africa had the lowest spending ranging between 3-4% but again, the plot shows upward trend for those regions. For the other regions, it seems that it has been relatively stable over time.
 
 ```{r plot4-zb, fig.cap = "Government expenditure on education (% of GDP), by income group, in 2000 and 2015"}
 data_zb %>% 
@@ -250,7 +250,7 @@ data_zb %>%
   kable_styling(bootstrap_options = c("striped", "hover"))
 
 ```
-As shown in Table \@ref(tab:plot4-zb), the increase in education spending is evident for the majority of countries. But it remained at same level for upper middle income countries.
+As shown in Table \@ref(tab:plot4-zb), the increase in education spending is evident for the majority of countries. But it remained at the same level for the upper middle income countries.
 
 Overall, it can be concluded that the total amount of global resources spent on education is increasing over the world.
 
