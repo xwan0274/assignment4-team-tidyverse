@@ -596,14 +596,11 @@ ggplot(df3, aes(x = Average_ratio,
 
 ```
 
-<<<<<<< HEAD
-Figure \@ref(fig:Plot2) Interestingly, it seems that Sub-Saharan Africa, South Asia and Middle East & North Africa has greater proportion in low income group comparing to other countries.  Middle East & North Africa and Sub-Saharan Africa has greater average pupil-teacher ratio in primary level. Europe& Central Asia has similar average pupil-teacher ratio across region. East Asia & Pacific and Latin America & Caribbean has similar average pupil-teacher ratio.
-=======
-  
 Figure \@ref(fig:Plot2) Interestingly, it seems that Sub-Saharan Africa, South Asia and Middle East & North Africa has greater proportion in low income group comparing to other countries.  Middle East & North Africa and Sub-Saharan Africa has greater average pupil-teacher ratio in primary level. Europe& Central Asia has similar average pupil-teacher ratio across region. East Asia & Pacific and Latin America & Caribbean has similar average pupil-teacher ratio. Significantly, pupil-teacher ratios are very essential to quality of education. They perhaps rank alongside professional knowledge, skill, as well as strategies, in genuinely determining educational success and performance (@ikediashi2012pupil). 
->>>>>>> 583914d7d4bb39d9af4e5ddb23219872da306edd
   
 
 \section*{Conclusion}
 
 Based on the findings discussed in this report, literacy rate overall shows an increasing trend since 2000, the improvements in the expansion of basic education and the reduction of education inequalities have contributed to the increase over the years. Total amount of global resources spent on education is increasing over the world, whereas the percentage of children out of primary school and the difference in percentage between male and female is also decreasing. In addition, middle income group has an overall steady average pupil-teacher ratio in each education level comparing to high and low income, while Europe & Central Asia and Middle East & North Africa has the most complete distribution of each income group in each education level. Overall, the global education situations are indeed getting better over the years.
+
+The conclusions could be biased due to the limitations of time period and number of dadasets, as well as missing values recorded in the data used.
