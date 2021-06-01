@@ -49,7 +49,6 @@ output:
 knitr::opts_chunk$set(echo = FALSE, 
                       messages = FALSE, 
                       warning = FALSE)
-# Libraries
 library(tidyverse)
 options(dplyr.summarise.inform = FALSE)
 library(readr)
@@ -131,7 +130,7 @@ data_joined <- df_filter %>%
                                 "country_code" = "Code")) 
 ```
 
-\section*{Mengyun}
+\section*{Literacy Rate}
 
 This section is to compare the literacy rate for adult and youth globally, regionally and in different age groups.
 
@@ -226,12 +225,6 @@ lit_long %>%
 Figure \@ref(fig:income-my) demonstrates that both adult and youth groups that have higher income tend to have higher literacy rate and all the income groups are showing an increasing trend in the literacy rate except for the upper middle income group had maintained a very high literacy rate over the years. It's pretty obvious that people have higher income are able to afford better education compare to those people with lower income.
 
 
-
-
-
-
-
-
 \section*{Education expenditure trend over the world}
 
 In this section we will discuss education expenditure across different countries in time period of 2000 to 2019. The indicator we have chosen to analyze in this section is:
@@ -316,6 +309,7 @@ data1_zb_wm %>%
   theme_map() +
   coord_cartesian(ylim = c(-50, 90)) 
 ```
+
 Figure \@ref(fig:plot1zb), provides an overview of spending on education by country. To produce the figure, we calculated average spending over the time period for each country. The average government spending on education across countries ranged between 1.2% - 11.5% of their GDP.
 
 ```{r plot2-zb, fig.cap = "Government expenditure on education (% of GDP), by income group"}
@@ -375,11 +369,123 @@ data_zb %>%
                 latex_options = "HOLD_position")
 
 ```
+
 As shown in Table \@ref(tab:plot4-zb), the increase in education spending is evident for the majority of countries. But it remained at the same level for the upper middle income countries.
 
 Overall, it can be concluded that the total amount of global resources spent on education is increasing over the world. But according to the article \cite{trabelsi2018public}, it is suggested that if the governance is weak more public spending on education leads to lower growth. However, the improvement of the quality of institutions enhances the economic performance.
 
-\section*{Xinrui}
+\section*{Percentage of children out of primary school}
+
+This section discusses the percentage of primary-school-age children who are not enrolled in primary or secondary school across regions between 2000 to 2019, including the changes of overall percentage and the difference in percentage between gender over these two decades. 
+
+```{r}
+df_outsch <- data_joined %>% 
+  filter(indicator %in% c("Children out of school (% of primary school age)",
+                          "Children out of school, male (% of male primary school age)",
+                          "Children out of school, female (% of female primary school age)")) %>% 
+  pivot_longer(cols = "2000":"2019",
+               names_to = "year",
+               values_to = "value") %>% 
+  pivot_wider(id_cols = -indicator,
+              names_from = indicator,
+              values_from = value) %>% 
+  rename("children_out_of_school_tot_%" = `Children out of school (% of primary school age)`,
+         "children_out_of_school_m_%" = `Children out of school, male (% of male primary school age)`,
+         "children_out_of_school_f_%" = `Children out of school, female (% of female primary school age)`)
+```
+
+```{r}
+outsch <- df_outsch %>% 
+  filter(country_name %in% c("East Asia & Pacific",
+                             "Europe & Central Asia",
+                             "Latin America & Caribbean",
+                             "Middle East & North Africa",
+                             "North America",
+                             "South Asia",
+                             "Sub-Saharan Africa")) 
+
+```
+
+```{r}
+income_level <- data_income %>% 
+  select(Region,`Income group`)
+```
+
+```{r}
+os_clean <- outsch %>% 
+  left_join(income_level,
+            by = c("country_name" = "Region")) %>% 
+  select(-c(country_code, Region, `Income group.x`)) %>% 
+  rename("region" = country_name,
+         "income_group" = `Income group.y`) %>% 
+  mutate(year = as.numeric(year))
+
+os_clean <- unique(os_clean[ , 1:5])
+```
+
+Figure \@ref(fig:plot1xw) shows that among all of the seven regions, Sub-Saharan Africa has the highest percentage of primary-school-age children out of school, followed by South Asia and Middle East & North Africa. However, all of these three countries witnessed a decrease in the percentage, especially in Sub-Saharan Africa, the figure dropped from nearly 40% in 2000 to lower than 20% in 2019. As suggested by @bennell2002hitting, high levels of sustained enrollment growth could be observed in Sub-Sahara Africa between 2000 and 2015. The percentage in South Asia and Middle East & North Africa also decreased to below 10% in 2019 while the figure for rest regions remained relatively steady between 0-5%.
+
+```{r plot1xw, fig.cap="Percentage of children out of school in primary school age"}
+os_clean %>% 
+  ggplot(aes(x = year, y = `children_out_of_school_tot_%`, colour = region)) +
+  geom_line() +
+  labs(x = "Year", y = "Percentage") +
+  scale_fill_brewer(palette="Paired") +
+  theme_light() 
+```
+
+```{r}
+os_gender <- os_clean %>% 
+  rename("male" = `children_out_of_school_m_%`,
+         "female" = `children_out_of_school_f_%`) %>% 
+  pivot_longer(cols = c(male,female),
+               names_to = "gender",
+               values_to = "percentage") %>% 
+  select(-`children_out_of_school_tot_%`)
+```
+
+To have a deeper understanding, Figure \@ref(fig:plot1xw) explores the difference of percentage of primary-school-age out of school in gender across regions. Again, in Middle East & North Africa, South Asia and Sub-Saharan Africa, where the total percentage is significantly higher, it is obvious that more females in primary school age are out of school compare with males.
+
+```{r plot2xw, fig.cap="Percentage of children out of school in primary school age by gender", warning=FALSE}
+os_gender %>% 
+ggplot(aes(x= year, y = percentage, fill = gender)) +
+  facet_wrap(~region,
+             ncol = 2) +
+  geom_bar(stat = "identity",
+           position = "dodge") +
+  xlim(c(2000,2019)) +
+  labs(x = "Year", y = "Percentage") +
+  scale_fill_brewer(palette="Paired") +
+  theme_light() 
+```
+
+```{r}
+os_diff <- os_clean %>% 
+  filter(year %in% c(2000,2019)) %>% 
+  group_by(region, year) %>% 
+  summarise(per_diff = `children_out_of_school_f_%` - `children_out_of_school_m_%`,
+            .groups = "drop") %>% 
+  pivot_wider(names_from = year,
+              values_from = per_diff)
+```
+
+According to Table \@ref(tab:tb1xw), in South Asia, the difference in percentage between male and female was the highest in 2000, the percentage of female children out of primary school is 13.05% higher than male. However, the difference decreased along with the total percentage, by the year of 2019, the difference in percentage has dropped to 1.26%. 
+
+Same changes can be observed in Middle East & North Africa, the difference in percentage also decreased from 7.33% to 1.94% between 2000 and 2019. Whereas in Sub-Saharan Africa, even though the total percentage drooped over the years, the difference in percentage between male and female school aged children did not decrease as much as in South Asia and Middle East & North Africa. In 2019, the percentage of female children out of primary school is still 4.29% higher compare with male.
+
+```{r tb1xw}
+os_diff[order(-os_diff$`2000`),] %>% 
+  kable(col.names = c("Region", 
+                      "Difference in percentage - 2000",
+                      "Difference in percentage - 2019"),
+      align = "c",
+      caption = "Difference in percentage of primary-school-age children out of school between males and females", 
+      digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped","hover"),
+                latex_options = "HOLD_position")
+```
+
+Another interesting finding is that in Europe & Central Asia and Latin America & Caribbean, the difference in percentage is -0.14% and -0.56% respectively in 2019, which indicates that in 2019, the percentage of primary-school-age male who are not enrolled in primary or secondary school is actually slightly higher than female, although the difference is very close to zero (Table \@ref(tab:tb1xw)).
 
 
 \section*{Xueqi}
