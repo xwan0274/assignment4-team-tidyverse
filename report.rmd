@@ -32,7 +32,6 @@ biblio-style: authoryear-comp
 linestretch: 1.5
 output:
   bookdown::pdf_document2:
-    extra_dependencies: ["float"]
     template: monashreport2.tex
     fig_caption: yes
     fig_height: 5
@@ -60,9 +59,6 @@ library(gridExtra)
 library(tinytex)
 library(readxl)
 library(naniar)
-library(gganimate)
-library(gifski)
-library(png)
 library(ggthemes)
 library(knitr)
 ```
@@ -162,7 +158,7 @@ lit_long$indicator <- lit_long$indicator %>%
   str_remove("total  of people ")
 ```
 
-```{r world-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", out.width = "90%", echo = FALSE}
+```{r world-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE}
 lit_long %>% 
   filter(country_name == "World") %>% 
   ggplot(aes(x = year,
@@ -182,7 +178,7 @@ lit_long %>%
 
 Figure \@ref(fig:world-my) shows that although the literacy rate for adult aged 15 and above is lower that the literacy rate for youth aged 15-24 in each year, both rates are showing a slow and steady increase over the years. The improvements in the expansion of basic education and the reduction of education inequalities have contributed to an increase in the global literacy rate, over the last 65 years it increased by 4% every 5 years (@owidliteracy).
 
-```{r regions-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", out.width = "90%", echo = FALSE, warning = FALSE}
+```{r regions-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE, warning = FALSE}
 lit_long %>% 
   filter(country_name %in% c("Central Europe and the Baltics",
                              "East Asia & Pacific",
@@ -209,7 +205,7 @@ lit_long %>%
 
 As the figure \@ref(fig:regions-my) shown below, there was a significant increase in the literacy rate for adult aged 15 and above in Middle East & North Africa, South Asia and Sub-Saharan Africa. South Asia and Sub-Saharan Africa also had improved the literacy rate tremendously in the youth age group over the years. Both East Asia & Pacific and Latin America & Caribbean had an 5% increase in literacy rate in the adult group where as the literacy rate increase approximately 4% in the youth group in Latin America & Caribbean and a small increase in the youth group in East Asia & Pacific. Regions like Central Europe and the Baltics and Europe & Central Asia had maintained a high literacy rate in both age groups over the years. Developed countries have better education facilities and system than developing countries, they tend to have higher literacy rate over the years.
 
-```{r income-my, fig.cap = "Literacy Rate for Adult and Youth in Differenet Income Groups", out.width = "90%", echo = FALSE}
+```{r income-my, fig.cap = "Literacy Rate for Adult and Youth in Differenet Income Groups", echo = FALSE}
 lit_long %>% 
   filter(country_name %in% c("Low income",
                              "Lower middle income",
@@ -494,6 +490,7 @@ os_diff[order(-os_diff$`2000`),] %>%
       digits = 2) %>% 
   kable_styling(bootstrap_options = c("striped","hover"),
                 latex_options = "HOLD_position")
+
 ```
 
 Another interesting finding is that in Europe & Central Asia and Latin America & Caribbean, the difference in percentage is -0.14% and -0.56% respectively in 2019, which indicates that in 2019, the percentage of primary-school-age male who are not enrolled in primary or secondary school is actually slightly higher than female, although the difference is very close to zero (Table \@ref(tab:tb1xw)).
@@ -548,15 +545,17 @@ df2 <- df_xq %>%
 Figure \@ref(fig:Plot1) Pupil-teacher ratio seems similar across 2000-2018. However, in 2019, there's a significant decrease in pupil-teacher ratio especially in tertiary level and primary level. Next, there's an increase pupil-teacher ratio in upper secondary level, secondary level and lower secondary level. 
 
 ```{r Table2}
- df3 <- df_xq %>%
+df3 <- df_xq %>%
   group_by(Indicator, Region) %>%
   select(Indicator, Region, value) %>%
   summarise(Average_ratio = mean(value, na.rm = TRUE)) %>% 
-  arrange(Average_ratio) %>% 
+  arrange(Average_ratio)
+
+df3 <- head(df3) %>% 
   kable(caption =  "Regional Average Pupil-teacher ratio between 2000-2019") %>%
   kable_styling (bootstrap_options = c("striped", "hover"),
                  latex_options = "HOLD_position") 
-  
+
 df3
 ```    
 
@@ -565,11 +564,13 @@ df3
   group_by(Indicator, Region) %>%
   select(Indicator, Region, value) %>%
   summarise(Average_ratio = mean(value, na.rm = TRUE)) %>% 
-  arrange(-Average_ratio) %>% 
+  arrange(-Average_ratio) 
+  
+df4 <- head(df4) %>% 
   kable(caption =  "Regional Average Pupil-teacher ratio between 2000-2019") %>%
   kable_styling (bootstrap_options = c("striped", "hover"),
                  latex_options = "HOLD_position") 
-  
+
 df4
 ```  
 
@@ -609,3 +610,22 @@ Based on the findings discussed in this report, literacy rate overall shows an i
 
 The conclusions could be biased due to the limitations of time period and number of dadasets, as well as missing values recorded in the data used.
 \clearpage
+
+
+\nocite{1}
+\nocite{2}
+\nocite{3}
+\nocite{4}
+\nocite{5}
+\nocite{6}
+\nocite{7}
+\nocite{8}
+\nocite{9}
+\nocite{10}
+\nocite{11}
+\nocite{12}
+
+
+
+
+

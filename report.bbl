@@ -1,0 +1,675 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{8}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=1f96b08fd674364dea894114af25585f}{%
+           family={Arnold},
+           familyi={A\bibinitperiod},
+           given={Jeffrey\bibnamedelima B.},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{1f96b08fd674364dea894114af25585f}
+      \strng{fullhash}{1f96b08fd674364dea894114af25585f}
+      \strng{bibnamehash}{1f96b08fd674364dea894114af25585f}
+      \strng{authorbibnamehash}{1f96b08fd674364dea894114af25585f}
+      \strng{authornamehash}{1f96b08fd674364dea894114af25585f}
+      \strng{authorfullhash}{1f96b08fd674364dea894114af25585f}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 4.2.4}
+      \field{title}{ggthemes: Extra Themes, Scales and Geoms for 'ggplot2'}
+      \field{year}{2021}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://CRAN.R-project.org/package=ggthemes
+      \endverb
+      \verb{url}
+      \verb https://CRAN.R-project.org/package=ggthemes
+      \endverb
+    \endentry
+    \entry{5}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=24172610f2e0da511a7a92129e5755d4}{%
+           family={Auguie},
+           familyi={A\bibinitperiod},
+           given={Baptiste},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{24172610f2e0da511a7a92129e5755d4}
+      \strng{fullhash}{24172610f2e0da511a7a92129e5755d4}
+      \strng{bibnamehash}{24172610f2e0da511a7a92129e5755d4}
+      \strng{authorbibnamehash}{24172610f2e0da511a7a92129e5755d4}
+      \strng{authornamehash}{24172610f2e0da511a7a92129e5755d4}
+      \strng{authorfullhash}{24172610f2e0da511a7a92129e5755d4}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 2.3}
+      \field{title}{gridExtra: Miscellaneous Functions for "Grid" Graphics}
+      \field{year}{2017}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://CRAN.R-project.org/package=gridExtra
+      \endverb
+      \verb{url}
+      \verb https://CRAN.R-project.org/package=gridExtra
+      \endverb
+    \endentry
+    \entry{bennell2002hitting}{article}{}
+      \name{author}{1}{}{%
+        {{hash=56f6d091a20251e406e9eaf11ca8f9fd}{%
+           family={Bennell},
+           familyi={B\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{56f6d091a20251e406e9eaf11ca8f9fd}
+      \strng{fullhash}{56f6d091a20251e406e9eaf11ca8f9fd}
+      \strng{bibnamehash}{56f6d091a20251e406e9eaf11ca8f9fd}
+      \strng{authorbibnamehash}{56f6d091a20251e406e9eaf11ca8f9fd}
+      \strng{authornamehash}{56f6d091a20251e406e9eaf11ca8f9fd}
+      \strng{authorfullhash}{56f6d091a20251e406e9eaf11ca8f9fd}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{World Development}
+      \field{number}{7}
+      \field{title}{Hitting the target: doubling primary school enrollments in Sub-Saharan Africa by 2015}
+      \field{volume}{30}
+      \field{year}{2002}
+      \field{pages}{1179\bibrangedash 1194}
+      \range{pages}{16}
+    \endentry
+    \entry{ikediashi2012pupil}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8d246ebcfc3375afdb73fdc301b3941c}{%
+           family={Ikediashi},
+           familyi={I\bibinitperiod},
+           given={Nwanneka\bibnamedelima N},
+           giveni={N\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=bf23609f65038c5a19b21d7bf35de648}{%
+           family={Amaechi},
+           familyi={A\bibinitperiod},
+           given={ON},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{74771515e83731e87f69037cd31bbba2}
+      \strng{fullhash}{74771515e83731e87f69037cd31bbba2}
+      \strng{bibnamehash}{74771515e83731e87f69037cd31bbba2}
+      \strng{authorbibnamehash}{74771515e83731e87f69037cd31bbba2}
+      \strng{authornamehash}{74771515e83731e87f69037cd31bbba2}
+      \strng{authorfullhash}{74771515e83731e87f69037cd31bbba2}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{AFRREV IJAH: An International Journal of Arts and Humanities}
+      \field{number}{1}
+      \field{title}{Pupil--Teacher Ratio: Implication for Quality Education in Nigeria Primary Schools}
+      \field{volume}{1}
+      \field{year}{2012}
+      \field{pages}{257\bibrangedash 264}
+      \range{pages}{8}
+    \endentry
+    \entry{12}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=dcdebb6b35bff7c0568bf8c50ef8626d}{%
+           family={{R Core Team}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Vienna, Austria}%
+      }
+      \list{organization}{1}{%
+        {R Foundation for Statistical Computing}%
+      }
+      \strng{namehash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \strng{fullhash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \strng{bibnamehash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \strng{authorbibnamehash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \strng{authornamehash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \strng{authorfullhash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{R: A Language and Environment for Statistical Computing}
+      \field{year}{2021}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.R-project.org/
+      \endverb
+      \verb{url}
+      \verb https://www.R-project.org/
+      \endverb
+    \endentry
+    \entry{owidliteracy}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c0e5ce1b546c571edc443f6a4f166170}{%
+           family={Roser},
+           familyi={R\bibinitperiod},
+           given={Max},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d628f02a81e173ec138360fd17e59cbf}{%
+           family={Ortiz-Ospina},
+           familyi={O\bibinithyphendelim O\bibinitperiod},
+           given={Esteban},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{21ac7e5aab2ec1142735e029d37b4f3a}
+      \strng{fullhash}{21ac7e5aab2ec1142735e029d37b4f3a}
+      \strng{bibnamehash}{21ac7e5aab2ec1142735e029d37b4f3a}
+      \strng{authorbibnamehash}{21ac7e5aab2ec1142735e029d37b4f3a}
+      \strng{authornamehash}{21ac7e5aab2ec1142735e029d37b4f3a}
+      \strng{authorfullhash}{21ac7e5aab2ec1142735e029d37b4f3a}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Our World in Data}
+      \field{note}{https://ourworldindata.org/literacy}
+      \field{title}{Literacy}
+      \field{year}{2016}
+    \endentry
+    \entry{7}{manual}{}
+      \name{author}{4}{}{%
+        {{hash=c82aa4714bea24e3573c048243d7d643}{%
+           family={Tierney},
+           familyi={T\bibinitperiod},
+           given={Nicholas},
+           giveni={N\bibinitperiod}}}%
+        {{hash=9c18385eeac57326b8adc5a18ecaa101}{%
+           family={Cook},
+           familyi={C\bibinitperiod},
+           given={Di},
+           giveni={D\bibinitperiod}}}%
+        {{hash=fa0e473e7608d73bb3700b1d1312b96d}{%
+           family={McBain},
+           familyi={M\bibinitperiod},
+           given={Miles},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bc7e492fb425b1a1b3bcbc2894047b4d}{%
+           family={Fay},
+           familyi={F\bibinitperiod},
+           given={Colin},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{e76e3eb113c482cdd1e0eafb46edbab3}
+      \strng{fullhash}{706dc49c2a68056ba5681382abc36f7c}
+      \strng{bibnamehash}{706dc49c2a68056ba5681382abc36f7c}
+      \strng{authorbibnamehash}{706dc49c2a68056ba5681382abc36f7c}
+      \strng{authornamehash}{e76e3eb113c482cdd1e0eafb46edbab3}
+      \strng{authorfullhash}{706dc49c2a68056ba5681382abc36f7c}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 0.6.1}
+      \field{title}{naniar: Data Structures, Summaries, and Visualisations for Missing Data}
+      \field{year}{2021}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://CRAN.R-project.org/package=naniar
+      \endverb
+      \verb{url}
+      \verb https://CRAN.R-project.org/package=naniar
+      \endverb
+    \endentry
+    \entry{trabelsi2018public}{article}{}
+      \name{author}{1}{}{%
+        {{hash=10db84531afbe4a19ea5b51a2e340b68}{%
+           family={Trabelsi},
+           familyi={T\bibinitperiod},
+           given={Salwa},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {The Economic Research Institute, Chung-Ang University}%
+      }
+      \strng{namehash}{10db84531afbe4a19ea5b51a2e340b68}
+      \strng{fullhash}{10db84531afbe4a19ea5b51a2e340b68}
+      \strng{bibnamehash}{10db84531afbe4a19ea5b51a2e340b68}
+      \strng{authorbibnamehash}{10db84531afbe4a19ea5b51a2e340b68}
+      \strng{authornamehash}{10db84531afbe4a19ea5b51a2e340b68}
+      \strng{authorfullhash}{10db84531afbe4a19ea5b51a2e340b68}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Economic Development}
+      \field{number}{1}
+      \field{title}{Public education spending and economic growth: The governance threshold effect}
+      \field{volume}{43}
+      \field{year}{2018}
+      \field{pages}{101\bibrangedash 124}
+      \range{pages}{24}
+    \endentry
+    \entry{4}{book}{}
+      \name{author}{1}{}{%
+        {{hash=1d0f6977ce2d043e298a59a1cd75b7ef}{%
+           family={Wickham},
+           familyi={W\bibinitperiod},
+           given={Hadley},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag New York}%
+      }
+      \strng{namehash}{1d0f6977ce2d043e298a59a1cd75b7ef}
+      \strng{fullhash}{1d0f6977ce2d043e298a59a1cd75b7ef}
+      \strng{bibnamehash}{1d0f6977ce2d043e298a59a1cd75b7ef}
+      \strng{authorbibnamehash}{1d0f6977ce2d043e298a59a1cd75b7ef}
+      \strng{authornamehash}{1d0f6977ce2d043e298a59a1cd75b7ef}
+      \strng{authorfullhash}{1d0f6977ce2d043e298a59a1cd75b7ef}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-319-24277-4}
+      \field{title}{ggplot2: Elegant Graphics for Data Analysis}
+      \field{year}{2016}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://ggplot2.tidyverse.org
+      \endverb
+      \verb{url}
+      \verb https://ggplot2.tidyverse.org
+      \endverb
+    \endentry
+    \entry{1}{article}{}
+      \name{author}{24}{}{%
+        {{hash=1d0f6977ce2d043e298a59a1cd75b7ef}{%
+           family={Wickham},
+           familyi={W\bibinitperiod},
+           given={Hadley},
+           giveni={H\bibinitperiod}}}%
+        {{hash=0c11220b22f907dc3709ff23c6b023e5}{%
+           family={Averick},
+           familyi={A\bibinitperiod},
+           given={Mara},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0f88b724c9f070dbceda00a5027d25bb}{%
+           family={Bryan},
+           familyi={B\bibinitperiod},
+           given={Jennifer},
+           giveni={J\bibinitperiod}}}%
+        {{hash=3ad4f9244dbfff3b38eeeec6d91fbd7d}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Winston},
+           giveni={W\bibinitperiod}}}%
+        {{hash=28ee445d433874efb86495f4c4e9d559}{%
+           family={McGowan},
+           familyi={M\bibinitperiod},
+           given={Lucy\bibnamedelima D'Agostino},
+           giveni={L\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=3bd2c624a8715b2aeffcecaa24f3d017}{%
+           family={François},
+           familyi={F\bibinitperiod},
+           given={Romain},
+           giveni={R\bibinitperiod}}}%
+        {{hash=de759ef99fad34b8426e26035eb4a20b}{%
+           family={Grolemund},
+           familyi={G\bibinitperiod},
+           given={Garrett},
+           giveni={G\bibinitperiod}}}%
+        {{hash=83154656fbd4fc02a9e468c493204cf9}{%
+           family={Hayes},
+           familyi={H\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod}}}%
+        {{hash=4caae9be043b32573c94b11203a4a2fe}{%
+           family={Henry},
+           familyi={H\bibinitperiod},
+           given={Lionel},
+           giveni={L\bibinitperiod}}}%
+        {{hash=5d26572f4d1de0fce70db1a8cfb6b0d1}{%
+           family={Hester},
+           familyi={H\bibinitperiod},
+           given={Jim},
+           giveni={J\bibinitperiod}}}%
+        {{hash=3305789acf03200ed22f154007d4fab9}{%
+           family={Kuhn},
+           familyi={K\bibinitperiod},
+           given={Max},
+           giveni={M\bibinitperiod}}}%
+        {{hash=baa847ed0a47fe330db451600329cf32}{%
+           family={Pedersen},
+           familyi={P\bibinitperiod},
+           given={Thomas\bibnamedelima Lin},
+           giveni={T\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=ac004a72f317bb04dcf539660a0feee0}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Evan},
+           giveni={E\bibinitperiod}}}%
+        {{hash=5769225f722449dff0c3f62aa09d2f6e}{%
+           family={Bache},
+           familyi={B\bibinitperiod},
+           given={Stephan\bibnamedelima Milton},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=1435ca4f08e53208e1c34297357afa80}{%
+           family={Müller},
+           familyi={M\bibinitperiod},
+           given={Kirill},
+           giveni={K\bibinitperiod}}}%
+        {{hash=0f4f7df4d18c1270721b575fc1288184}{%
+           family={Ooms},
+           familyi={O\bibinitperiod},
+           given={Jeroen},
+           giveni={J\bibinitperiod}}}%
+        {{hash=42a6c387e6c733bd0db8180d2bbacd30}{%
+           family={Robinson},
+           familyi={R\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=d318a128b5a51b4b776ac61c1f4f7e99}{%
+           family={Seidel},
+           familyi={S\bibinitperiod},
+           given={Dana\bibnamedelima Paige},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=ac149bcd683a561a218e8dc1c1529489}{%
+           family={Spinu},
+           familyi={S\bibinitperiod},
+           given={Vitalie},
+           giveni={V\bibinitperiod}}}%
+        {{hash=cc134fc26d52494111fa09f0a1546069}{%
+           family={Takahashi},
+           familyi={T\bibinitperiod},
+           given={Kohske},
+           giveni={K\bibinitperiod}}}%
+        {{hash=858f3a61393526cfc73cb860925a277a}{%
+           family={Vaughan},
+           familyi={V\bibinitperiod},
+           given={Davis},
+           giveni={D\bibinitperiod}}}%
+        {{hash=acc6b5a79d7cad33c02e41491584028f}{%
+           family={Wilke},
+           familyi={W\bibinitperiod},
+           given={Claus},
+           giveni={C\bibinitperiod}}}%
+        {{hash=ff79890fd7a7f58816ee7360c25d812e}{%
+           family={Woo},
+           familyi={W\bibinitperiod},
+           given={Kara},
+           giveni={K\bibinitperiod}}}%
+        {{hash=f2f301536c9cd620e39deb5fad8712ff}{%
+           family={Yutani},
+           familyi={Y\bibinitperiod},
+           given={Hiroaki},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0731a35ef88164c57848ecb7ca5f8ca}
+      \strng{fullhash}{60da0af5902bcdfab541641a492d8d42}
+      \strng{bibnamehash}{60da0af5902bcdfab541641a492d8d42}
+      \strng{authorbibnamehash}{60da0af5902bcdfab541641a492d8d42}
+      \strng{authornamehash}{e0731a35ef88164c57848ecb7ca5f8ca}
+      \strng{authorfullhash}{60da0af5902bcdfab541641a492d8d42}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Open Source Software}
+      \field{number}{43}
+      \field{title}{Welcome to the {tidyverse}}
+      \field{volume}{4}
+      \field{year}{2019}
+      \true{nocite}
+      \field{pages}{1686}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.21105/joss.01686
+      \endverb
+    \endentry
+    \entry{6}{manual}{}
+      \name{author}{2}{}{%
+        {{hash=1d0f6977ce2d043e298a59a1cd75b7ef}{%
+           family={Wickham},
+           familyi={W\bibinitperiod},
+           given={Hadley},
+           giveni={H\bibinitperiod}}}%
+        {{hash=0f88b724c9f070dbceda00a5027d25bb}{%
+           family={Bryan},
+           familyi={B\bibinitperiod},
+           given={Jennifer},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{0502df7548147d8c367ca426bcfaecd3}
+      \strng{fullhash}{0502df7548147d8c367ca426bcfaecd3}
+      \strng{bibnamehash}{0502df7548147d8c367ca426bcfaecd3}
+      \strng{authorbibnamehash}{0502df7548147d8c367ca426bcfaecd3}
+      \strng{authornamehash}{0502df7548147d8c367ca426bcfaecd3}
+      \strng{authorfullhash}{0502df7548147d8c367ca426bcfaecd3}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 1.3.1}
+      \field{title}{readxl: Read Excel Files}
+      \field{year}{2019}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://CRAN.R-project.org/package=readxl
+      \endverb
+      \verb{url}
+      \verb https://CRAN.R-project.org/package=readxl
+      \endverb
+    \endentry
+    \entry{2}{manual}{}
+      \name{author}{2}{}{%
+        {{hash=1d0f6977ce2d043e298a59a1cd75b7ef}{%
+           family={Wickham},
+           familyi={W\bibinitperiod},
+           given={Hadley},
+           giveni={H\bibinitperiod}}}%
+        {{hash=5d26572f4d1de0fce70db1a8cfb6b0d1}{%
+           family={Hester},
+           familyi={H\bibinitperiod},
+           given={Jim},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{aa1916b6c240d8d73dcdeb1433b20a44}
+      \strng{fullhash}{aa1916b6c240d8d73dcdeb1433b20a44}
+      \strng{bibnamehash}{aa1916b6c240d8d73dcdeb1433b20a44}
+      \strng{authorbibnamehash}{aa1916b6c240d8d73dcdeb1433b20a44}
+      \strng{authornamehash}{aa1916b6c240d8d73dcdeb1433b20a44}
+      \strng{authorfullhash}{aa1916b6c240d8d73dcdeb1433b20a44}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 1.4.0}
+      \field{title}{readr: Read Rectangular Text Data}
+      \field{year}{2020}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://CRAN.R-project.org/package=readr
+      \endverb
+      \verb{url}
+      \verb https://CRAN.R-project.org/package=readr
+      \endverb
+    \endentry
+    \entry{11}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=25ce25b9d444076e0963bcf9fa3a6f92}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Yihui},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{fullhash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{bibnamehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{authorbibnamehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{authornamehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{authorfullhash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \field{extraname}{1}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 0.22}
+      \field{title}{bookdown: Authoring Books and Technical Documents with R Markdown}
+      \field{year}{2021}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://github.com/rstudio/bookdown
+      \endverb
+      \verb{url}
+      \verb https://github.com/rstudio/bookdown
+      \endverb
+    \endentry
+    \entry{9}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=25ce25b9d444076e0963bcf9fa3a6f92}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Yihui},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{fullhash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{bibnamehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{authorbibnamehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{authornamehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{authorfullhash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \field{extraname}{2}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 1.33}
+      \field{title}{knitr: A General-Purpose Package for Dynamic Report Generation in R}
+      \field{year}{2021}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://yihui.org/knitr/
+      \endverb
+      \verb{url}
+      \verb https://yihui.org/knitr/
+      \endverb
+    \endentry
+    \entry{10}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=25ce25b9d444076e0963bcf9fa3a6f92}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Yihui},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{fullhash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{bibnamehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{authorbibnamehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{authornamehash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \strng{authorfullhash}{25ce25b9d444076e0963bcf9fa3a6f92}
+      \field{extraname}{3}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 0.32}
+      \field{title}{tinytex: Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents}
+      \field{year}{2021}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://github.com/yihui/tinytex
+      \endverb
+      \verb{url}
+      \verb https://github.com/yihui/tinytex
+      \endverb
+    \endentry
+    \entry{3}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=9d368ab66d67ab2a2f3f79695b175856}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Hao},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{9d368ab66d67ab2a2f3f79695b175856}
+      \strng{fullhash}{9d368ab66d67ab2a2f3f79695b175856}
+      \strng{bibnamehash}{9d368ab66d67ab2a2f3f79695b175856}
+      \strng{authorbibnamehash}{9d368ab66d67ab2a2f3f79695b175856}
+      \strng{authornamehash}{9d368ab66d67ab2a2f3f79695b175856}
+      \strng{authorfullhash}{9d368ab66d67ab2a2f3f79695b175856}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 1.3.4}
+      \field{title}{kableExtra: Construct Complex Table with 'kable' and Pipe Syntax}
+      \field{year}{2021}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://CRAN.R-project.org/package=kableExtra
+      \endverb
+      \verb{url}
+      \verb https://CRAN.R-project.org/package=kableExtra
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

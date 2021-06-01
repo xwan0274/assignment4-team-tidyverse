@@ -32,6 +32,15 @@
 \usepackage{longtable,booktabs}
 % Fix footnotes in tables (requires footnote package)
 \IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 \IfFileExists{parskip.sty}{%
 \usepackage{parskip}
 }{% else
@@ -276,12 +285,12 @@
 \setstretch{1.5}
 
 %% Any special functions or other packages can be loaded here.
-\usepackage{float}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{multirow}
 \usepackage{wrapfig}
+\usepackage{float}
 \usepackage{colortbl}
 \usepackage{pdflscape}
 \usepackage{tabu}
@@ -295,33 +304,53 @@
 \begin{document}
 \titlepage
 
-{
-\setcounter{tocdepth}{2}
-\tableofcontents
-}
 \section*{Introduction}
+
+The purpose of this report is to analyse the different education situations across various regions and income groups using data collected from 2000 and 2019, there are four key aspects discussed in this report:
+
+\begin{itemize}
+\tightlist
+\item
+  Literacy rate of adults and youth
+\item
+  Discuss the Government Expenditure on Education in percentage of GDP
+\item
+  Percentage of primary-school-aged children out of school
+\item
+  Pupil-teacher ratio
+\end{itemize}
+
+Data sets used in this report are provided by the World Bank, which are \href{https://data.worldbank.org/topic/education?end=2018\&start=1998\&view=chart}{Education} and \href{https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups}{World Bank Country and Lending Groups}. Both data sets falls under \href{https://datacatalog.worldbank.org/public-licenses}{Creative Commons Attribution 4.0 International license} and are allowed to use for analysis purpose of this report.
+\clearpage
 
 \section*{Literacy Rate}
 
 This section is to compare the literacy rate for adult and youth globally, regionally and in different age groups.
 
-\begin{figure}[H]
-\includegraphics[width=0.9\linewidth,]{report_files/figure-latex/world-my-1} \caption{Global Literacy Rate for Adult and Youth between 2000-2019}\label{fig:world-my}
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/world-my-1.pdf}
+\caption{\label{fig:world-my}Global Literacy Rate for Adult and Youth between 2000-2019}
 \end{figure}
 
 Figure \ref{fig:world-my} shows that although the literacy rate for adult aged 15 and above is lower that the literacy rate for youth aged 15-24 in each year, both rates are showing a slow and steady increase over the years. The improvements in the expansion of basic education and the reduction of education inequalities have contributed to an increase in the global literacy rate, over the last 65 years it increased by 4\% every 5 years (\textcite{owidliteracy}).
 
-\begin{figure}[H]
-\includegraphics[width=0.9\linewidth,]{report_files/figure-latex/regions-my-1} \caption{Global Literacy Rate for Adult and Youth between 2000-2019}\label{fig:regions-my}
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/regions-my-1.pdf}
+\caption{\label{fig:regions-my}Global Literacy Rate for Adult and Youth between 2000-2019}
 \end{figure}
 
-As the figure \ref{fig:regions-my} shown above, there was a significant increase in the literacy rate for adult aged 15 and above in Middle East \& North Africa, South Asia and Sub-Saharan Africa. South Asia and Sub-Saharan Africa also had improved the literacy rate tremendously in the youth age group over the years. Both East Asia \& Pacific and Latin America \& Caribbean had an 5\% increase in literacy rate in the adult group where as the literacy rate increase approximately 4\% in the youth group in Latin America \& Caribbean and a small increase in the youth group in East Asia \& Pacific. Regions like Central Europe and the Baltics and Europe \& Central Asia had maintained a high literacy rate in both age groups over the years. Developed countries have better education facilities and system than developing countries, they tend to have higher literacy rate over the years.
+As the figure \ref{fig:regions-my} shown below, there was a significant increase in the literacy rate for adult aged 15 and above in Middle East \& North Africa, South Asia and Sub-Saharan Africa. South Asia and Sub-Saharan Africa also had improved the literacy rate tremendously in the youth age group over the years. Both East Asia \& Pacific and Latin America \& Caribbean had an 5\% increase in literacy rate in the adult group where as the literacy rate increase approximately 4\% in the youth group in Latin America \& Caribbean and a small increase in the youth group in East Asia \& Pacific. Regions like Central Europe and the Baltics and Europe \& Central Asia had maintained a high literacy rate in both age groups over the years. Developed countries have better education facilities and system than developing countries, they tend to have higher literacy rate over the years.
 
-\begin{figure}[H]
-\includegraphics[width=0.9\linewidth,]{report_files/figure-latex/income-my-1} \caption{Literacy Rate for Adult and Youth in Differenet Income Groups}\label{fig:income-my}
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/income-my-1.pdf}
+\caption{\label{fig:income-my}Literacy Rate for Adult and Youth in Differenet Income Groups}
 \end{figure}
 
 Figure \ref{fig:income-my} demonstrates that both adult and youth groups that have higher income tend to have higher literacy rate and all the income groups are showing an increasing trend in the literacy rate except for the upper middle income group had maintained a very high literacy rate over the years. It's pretty obvious that people have higher income are able to afford better education compare to those people with lower income.
+\clearpage
 
 \section*{Education expenditure trend over the world}
 
@@ -335,21 +364,27 @@ In this section we will discuss education expenditure across different countries
 
 General government expenditure on education (current, capital, and transfers) is expressed as a percentage of Gross Domestic Product (GDP). It includes expenditure funded by transfers from international sources to government.
 
-\textbackslash begin\{figure\}{[}H{]}
-\includegraphics{report_files/figure-latex/plot1zb-1} \textbackslash caption\{Average government expenditure on education (\% of GDP), 2000-2019\}\label{fig:plot1zb}
-\textbackslash end\{figure\}
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/plot1zb-1.pdf}
+\caption{\label{fig:plot1zb}Average government expenditure on education (\% of GDP), 2000-2019}
+\end{figure}
 
 Figure \ref{fig:plot1zb}, provides an overview of spending on education by country. To produce the figure, we calculated average spending over the time period for each country. The average government spending on education across countries ranged between 1.2\% - 11.5\% of their GDP.
 
-\textbackslash begin\{figure\}{[}H{]}
-\includegraphics{report_files/figure-latex/plot2-zb-1} \textbackslash caption\{Government expenditure on education (\% of GDP), by income group\}\label{fig:plot2-zb}
-\textbackslash end\{figure\}
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/plot2-zb-1.pdf}
+\caption{\label{fig:plot2-zb}Government expenditure on education (\% of GDP), by income group}
+\end{figure}
 
 Then we looked at the government expenditure on education by income group over time in Figure \ref{fig:plot2-zb}. What evident on the graph is that the low income countries have devoted much lesser proportion of their GDP but also we can see that spending has increased on average for those countries. On the other hand, high income countries spending more share of their GDP roughly between 4.5\% to 5\%. However the data had many missing values, a broad upward trend can be observed from the Figure \ref{fig:plot2-zb}.
 
-\textbackslash begin\{figure\}{[}H{]}
-\includegraphics{report_files/figure-latex/plot3-zb-1} \textbackslash caption\{Government expenditure on education (\% of GDP), by region\}\label{fig:plot3-zb}
-\textbackslash end\{figure\}
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/plot3-zb-1.pdf}
+\caption{\label{fig:plot3-zb}Government expenditure on education (\% of GDP), by region}
+\end{figure}
 
 In Figure \ref{fig:plot3-zb}, we visualized the education spending by geographical regions. During the time period, South Asia and Sub-Saharan Africa had the lowest spending ranging between 3-4\% but again, the plot shows upward trend for those regions. For the other regions, it seems that it has been relatively stable over time.
 
@@ -374,7 +409,8 @@ Upper middle income & 4.46 & 4.47 & 0.02\\
 
 As shown in Table \ref{tab:plot4-zb}, the increase in education spending is evident for the majority of countries. But it remained at the same level for the upper middle income countries.
 
-Overall, it can be concluded that the total amount of global resources spent on education is increasing over the world. But according to the article \cite{trabelsi2018public}, it is suggested that if the governance is weak more public spending on education leads to lower growth. However, the improvement of the quality of institutions enhances the economic performance.
+Overall, it can be concluded that the total amount of global resources spent on education is increasing over the world. But according to \textcite{trabelsi2018public}, it is suggested that if the governance is weak more public spending on education leads to lower growth. However, the improvement of the quality of institutions enhances the economic performance.
+\clearpage
 
 \section*{Percentage of children out of primary school}
 
@@ -382,14 +418,18 @@ This section discusses the percentage of primary-school-age children who are not
 
 Figure \ref{fig:plot1xw} shows that among all of the seven regions, Sub-Saharan Africa has the highest percentage of primary-school-age children out of school, followed by South Asia and Middle East \& North Africa. However, all of these three countries witnessed a decrease in the percentage, especially in Sub-Saharan Africa, the figure dropped from nearly 40\% in 2000 to lower than 20\% in 2019. As suggested by \textcite{bennell2002hitting}, high levels of sustained enrollment growth could be observed in Sub-Sahara Africa between 2000 and 2015. The percentage in South Asia and Middle East \& North Africa also decreased to below 10\% in 2019 while the figure for rest regions remained relatively steady between 0-5\%.
 
-\begin{figure}[H]
-\includegraphics{report_files/figure-latex/plot1xw-1} \caption{Percentage of children out of school in primary school age}\label{fig:plot1xw}
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/plot1xw-1.pdf}
+\caption{\label{fig:plot1xw}Percentage of children out of school in primary school age}
 \end{figure}
 
-To have a deeper understanding, Figure \ref{fig:plot1xw} explores the difference of percentage of primary-school-age out of school in gender across regions. Again, in Middle East \& North Africa, South Asia and Sub-Saharan Africa, where the total percentage is significantly higher, it is obvious that more females in primary school age are out of school compare with males.
+To have a deeper understanding, Figure \ref{fig:plot2xw} explores the difference of percentage of primary-school-age out of school in gender across regions. Again, in Middle East \& North Africa, South Asia and Sub-Saharan Africa, where the total percentage is significantly higher, it is obvious that more females in primary school age are out of school compare with males.
 
-\begin{figure}[H]
-\includegraphics{report_files/figure-latex/plot2xw-1} \caption{Percentage of children out of school in primary school age by gender}\label{fig:plot2xw}
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/plot2xw-1.pdf}
+\caption{\label{fig:plot2xw}Percentage of children out of school in primary school age by gender}
 \end{figure}
 
 According to Table \ref{tab:tb1xw}, in South Asia, the difference in percentage between male and female was the highest in 2000, the percentage of female children out of primary school is 13.05\% higher than male. However, the difference decreased along with the total percentage, by the year of 2019, the difference in percentage has dropped to 1.26\%.
@@ -422,16 +462,21 @@ North America & 0.23 & 0.11\\
 \end{table}
 
 Another interesting finding is that in Europe \& Central Asia and Latin America \& Caribbean, the difference in percentage is -0.14\% and -0.56\% respectively in 2019, which indicates that in 2019, the percentage of primary-school-age male who are not enrolled in primary or secondary school is actually slightly higher than female, although the difference is very close to zero (Table \ref{tab:tb1xw}).
+\clearpage
 
-\section*{Xueqi}
+\section*{Pupil-teacher Ratio}
 
-This section discuss the pupil-teacher ratio from 2000-2019
+This section discusses the pupil-teacher ratio from 2000-2019.
 
-\includegraphics{report_files/figure-latex/figure1-1}
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/Plot1-1.pdf}
+\caption{\label{fig:Plot1}Pupil-teacher ratio (\%) between 2000-2019}
+\end{figure}
 
-Figure \ref{fig:figure1} Pupil-teacher ratio seems similar across 2000-2018. However, in 2019, there's a significant decrease in pupil-teacher ratio especially in tertiary level and primary level. Next, there's an increase pupil-teacher ratio in upper secondary level, secondary level and lower secondary level.
+Figure \ref{fig:Plot1} Pupil-teacher ratio seems similar across 2000-2018. However, in 2019, there's a significant decrease in pupil-teacher ratio especially in tertiary level and primary level. Next, there's an increase pupil-teacher ratio in upper secondary level, secondary level and lower secondary level.
 
-\begin{table}
+\begin{table}[H]
 
 \caption{\label{tab:Table2}Regional Average Pupil-teacher ratio between 2000-2019}
 \centering
@@ -451,82 +496,10 @@ Pupil-teacher ratio, primary & North America & 10.210233\\
 \hline
 Pupil-teacher ratio, lower secondary & Europe \& Central Asia & 10.472160\\
 \hline
-Pupil-teacher ratio, secondary & Europe \& Central Asia & 11.001635\\
-\hline
-Pupil-teacher ratio, upper secondary & Europe \& Central Asia & 12.030519\\
-\hline
-Pupil-teacher ratio, tertiary & North America & 12.085918\\
-\hline
-Pupil-teacher ratio, preprimary & Europe \& Central Asia & 12.700575\\
-\hline
-Pupil-teacher ratio, upper secondary & Middle East \& North Africa & 12.831898\\
-\hline
-Pupil-teacher ratio, tertiary & Latin America \& Caribbean & 13.020706\\
-\hline
-Pupil-teacher ratio, tertiary & Europe \& Central Asia & 14.475969\\
-\hline
-Pupil-teacher ratio, secondary & Middle East \& North Africa & 14.811131\\
-\hline
-Pupil-teacher ratio, primary & Europe \& Central Asia & 14.839421\\
-\hline
-Pupil-teacher ratio, upper secondary & Latin America \& Caribbean & 15.641246\\
-\hline
-Pupil-teacher ratio, lower secondary & Middle East \& North Africa & 15.967261\\
-\hline
-Pupil-teacher ratio, secondary & Latin America \& Caribbean & 16.471384\\
-\hline
-Pupil-teacher ratio, lower secondary & Latin America \& Caribbean & 17.696099\\
-\hline
-Pupil-teacher ratio, preprimary & South Asia & 17.959625\\
-\hline
-Pupil-teacher ratio, preprimary & Middle East \& North Africa & 17.971469\\
-\hline
-Pupil-teacher ratio, tertiary & East Asia \& Pacific & 18.230038\\
-\hline
-Pupil-teacher ratio, secondary & East Asia \& Pacific & 18.814013\\
-\hline
-Pupil-teacher ratio, upper secondary & East Asia \& Pacific & 19.035888\\
-\hline
-Pupil-teacher ratio, preprimary & Latin America \& Caribbean & 19.303227\\
-\hline
-Pupil-teacher ratio, primary & Middle East \& North Africa & 19.411776\\
-\hline
-Pupil-teacher ratio, tertiary & Middle East \& North Africa & 20.082141\\
-\hline
-Pupil-teacher ratio, lower secondary & East Asia \& Pacific & 20.270048\\
-\hline
-Pupil-teacher ratio, primary & Latin America \& Caribbean & 20.330124\\
-\hline
-Pupil-teacher ratio, tertiary & Sub-Saharan Africa & 20.578647\\
-\hline
-Pupil-teacher ratio, preprimary & East Asia \& Pacific & 20.920228\\
-\hline
-Pupil-teacher ratio, upper secondary & Sub-Saharan Africa & 21.345747\\
-\hline
-Pupil-teacher ratio, tertiary & South Asia & 22.264410\\
-\hline
-Pupil-teacher ratio, upper secondary & South Asia & 23.370092\\
-\hline
-Pupil-teacher ratio, primary & East Asia \& Pacific & 23.503276\\
-\hline
-Pupil-teacher ratio, secondary & Sub-Saharan Africa & 25.207200\\
-\hline
-Pupil-teacher ratio, lower secondary & South Asia & 26.102560\\
-\hline
-Pupil-teacher ratio, secondary & South Asia & 26.190960\\
-\hline
-Pupil-teacher ratio, preprimary & Sub-Saharan Africa & 27.359228\\
-\hline
-Pupil-teacher ratio, lower secondary & Sub-Saharan Africa & 31.375117\\
-\hline
-Pupil-teacher ratio, primary & South Asia & 31.633370\\
-\hline
-Pupil-teacher ratio, primary & Sub-Saharan Africa & 41.887322\\
-\hline
 \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[H]
 
 \caption{\label{tab:Table3}Regional Average Pupil-teacher ratio between 2000-2019}
 \centering
@@ -534,100 +507,51 @@ Pupil-teacher ratio, primary & Sub-Saharan Africa & 41.887322\\
 \hline
 Indicator & Region & Average\_ratio\\
 \hline
-Pupil-teacher ratio, primary & Sub-Saharan Africa & 41.887322\\
+Pupil-teacher ratio, primary & Sub-Saharan Africa & 41.88732\\
 \hline
-Pupil-teacher ratio, primary & South Asia & 31.633370\\
+Pupil-teacher ratio, primary & South Asia & 31.63337\\
 \hline
-Pupil-teacher ratio, lower secondary & Sub-Saharan Africa & 31.375117\\
+Pupil-teacher ratio, lower secondary & Sub-Saharan Africa & 31.37512\\
 \hline
-Pupil-teacher ratio, preprimary & Sub-Saharan Africa & 27.359228\\
+Pupil-teacher ratio, preprimary & Sub-Saharan Africa & 27.35923\\
 \hline
-Pupil-teacher ratio, secondary & South Asia & 26.190960\\
+Pupil-teacher ratio, secondary & South Asia & 26.19096\\
 \hline
-Pupil-teacher ratio, lower secondary & South Asia & 26.102560\\
-\hline
-Pupil-teacher ratio, secondary & Sub-Saharan Africa & 25.207200\\
-\hline
-Pupil-teacher ratio, primary & East Asia \& Pacific & 23.503276\\
-\hline
-Pupil-teacher ratio, upper secondary & South Asia & 23.370092\\
-\hline
-Pupil-teacher ratio, tertiary & South Asia & 22.264410\\
-\hline
-Pupil-teacher ratio, upper secondary & Sub-Saharan Africa & 21.345747\\
-\hline
-Pupil-teacher ratio, preprimary & East Asia \& Pacific & 20.920228\\
-\hline
-Pupil-teacher ratio, tertiary & Sub-Saharan Africa & 20.578647\\
-\hline
-Pupil-teacher ratio, primary & Latin America \& Caribbean & 20.330124\\
-\hline
-Pupil-teacher ratio, lower secondary & East Asia \& Pacific & 20.270048\\
-\hline
-Pupil-teacher ratio, tertiary & Middle East \& North Africa & 20.082141\\
-\hline
-Pupil-teacher ratio, primary & Middle East \& North Africa & 19.411776\\
-\hline
-Pupil-teacher ratio, preprimary & Latin America \& Caribbean & 19.303227\\
-\hline
-Pupil-teacher ratio, upper secondary & East Asia \& Pacific & 19.035888\\
-\hline
-Pupil-teacher ratio, secondary & East Asia \& Pacific & 18.814013\\
-\hline
-Pupil-teacher ratio, tertiary & East Asia \& Pacific & 18.230038\\
-\hline
-Pupil-teacher ratio, preprimary & Middle East \& North Africa & 17.971469\\
-\hline
-Pupil-teacher ratio, preprimary & South Asia & 17.959625\\
-\hline
-Pupil-teacher ratio, lower secondary & Latin America \& Caribbean & 17.696099\\
-\hline
-Pupil-teacher ratio, secondary & Latin America \& Caribbean & 16.471384\\
-\hline
-Pupil-teacher ratio, lower secondary & Middle East \& North Africa & 15.967261\\
-\hline
-Pupil-teacher ratio, upper secondary & Latin America \& Caribbean & 15.641246\\
-\hline
-Pupil-teacher ratio, primary & Europe \& Central Asia & 14.839421\\
-\hline
-Pupil-teacher ratio, secondary & Middle East \& North Africa & 14.811131\\
-\hline
-Pupil-teacher ratio, tertiary & Europe \& Central Asia & 14.475969\\
-\hline
-Pupil-teacher ratio, tertiary & Latin America \& Caribbean & 13.020706\\
-\hline
-Pupil-teacher ratio, upper secondary & Middle East \& North Africa & 12.831898\\
-\hline
-Pupil-teacher ratio, preprimary & Europe \& Central Asia & 12.700575\\
-\hline
-Pupil-teacher ratio, tertiary & North America & 12.085918\\
-\hline
-Pupil-teacher ratio, upper secondary & Europe \& Central Asia & 12.030519\\
-\hline
-Pupil-teacher ratio, secondary & Europe \& Central Asia & 11.001635\\
-\hline
-Pupil-teacher ratio, lower secondary & Europe \& Central Asia & 10.472160\\
-\hline
-Pupil-teacher ratio, primary & North America & 10.210233\\
-\hline
-Pupil-teacher ratio, upper secondary & North America & 9.125136\\
-\hline
-Pupil-teacher ratio, preprimary & North America & 9.078012\\
-\hline
-Pupil-teacher ratio, secondary & North America & 7.979289\\
-\hline
-Pupil-teacher ratio, lower secondary & North America & 7.883399\\
+Pupil-teacher ratio, lower secondary & South Asia & 26.10256\\
 \hline
 \end{tabular}
 \end{table}
 
 Table \ref{tab:Table2} and Table \ref{tab:Table3} indicates that the highest average ratio is 41.887322 in Sub-saharan Africa's primary level between 2000-2019 holding other variable constant. Holding other variable constant, the lowest average ratio is 7.883399 in North America's lower-secondary level between 2000-2019
 
-\includegraphics{report_files/figure-latex/figure2-1}
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/Plot2-1.pdf}
+\caption{\label{fig:Plot2}Average pupil-teacher ratio on different income group in each region}
+\end{figure}
 
-Figure \ref{fig:figure2} Interestingly, it seems that Sub-Saharan Africa, South Asia and Middle East \& North Africa has greater proportion in low income group comparing to other countries. Middle East \& North Africa and Sub-Saharan Africa has greater average pupil-teacher ratio in primary level. Europe\& Central Asia has similar average pupil-teacher ratio across region. East Asia \& Pacific and Latin America \& Caribbean has similar average pupil-teacher ratio. Significantly, pupil-teacher ratios are very essential to quality of education. They perhaps rank alongside professional knowledge, skill, as well as strategies, in genuinely determining educational success and performance (\textcite{ikediashi2012pupil}).
+Figure \ref{fig:Plot2} Interestingly, it seems that Sub-Saharan Africa, South Asia and Middle East \& North Africa has greater proportion in low income group comparing to other countries. Middle East \& North Africa and Sub-Saharan Africa has greater average pupil-teacher ratio in primary level. Europe\& Central Asia has similar average pupil-teacher ratio across region. East Asia \& Pacific and Latin America \& Caribbean has similar average pupil-teacher ratio. Significantly, pupil-teacher ratios are very essential to quality of education. They perhaps rank alongside professional knowledge, skill, as well as strategies, in genuinely determining educational success and performance (\textcite{ikediashi2012pupil}).
+\clearpage
 
 \section*{Conclusion}
+
+Based on the findings discussed in this report, literacy rate overall shows an increasing trend since 2000, the improvements in the expansion of basic education and the reduction of education inequalities have contributed to the increase over the years. Total amount of global resources spent on education is increasing over the world, whereas the percentage of children out of primary school and the difference in percentage between male and female is also decreasing. In addition, middle income group has an overall steady average pupil-teacher ratio in each education level comparing to high and low income, while Europe \& Central Asia and Middle East \& North Africa has the most complete distribution of each income group in each education level. Overall, the global education situations are indeed getting better over the years.
+
+The conclusions could be biased due to the limitations of time period and number of dadasets, as well as missing values recorded in the data used.
+\clearpage
+
+\nocite{1}
+\nocite{2}
+\nocite{3}
+\nocite{4}
+\nocite{5}
+\nocite{6}
+\nocite{7}
+\nocite{8}
+\nocite{9}
+\nocite{10}
+\nocite{11}
+\nocite{12}
 
 \printbibliography
 
