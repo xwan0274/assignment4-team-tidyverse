@@ -46,7 +46,7 @@ library(maps)
 
 ## Team members
 
-* "Mengyuan YANG" myan0065@student.monash.edu
+* "Mengyun YANG" myan0065@student.monash.edu
 * "Zoljargal BATSAIKHAN" zbat0001@student.monash.edu
 * "Xinrui WANG" xwan0274@student.monash.edu
 * "Xueqi GOH" xgoh0002@student.monash.edu
