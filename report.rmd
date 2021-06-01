@@ -1,5 +1,5 @@
 ---
-title: " "
+title: "What does data tell us about the education situations around the world?"
 author:
 - familyname: YANG
   othernames: Mengyuan
@@ -44,8 +44,7 @@ output:
     toc: true
 ---
 
-```{r , echo = FALSE, message = FALSE, warning = FALSE}
-# Libraries
+```{r echo = FALSE, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(readr)
 library(kableExtra)
@@ -174,7 +173,7 @@ os_clean <- outsch %>%
 os_clean <- unique(os_clean[ , 1:5])
 ```
 
-Figure \@ref(fig:plot1xw) shows that among all of the seven regions, Sub-Saharan Africa has the highest percentage of primary-school-age children out of school, followed by South Asia and Middle East & North Africa. However, all of these three countries witnessed a decrease in the percentage, especially in Sub-Saharan Africa, the figure dropped from nearly 40% in 2000 to lower than 20% in 2019. The percentage in South Asia and Middle East & North Africa also decreased to below 10% in 2019 while the figure for rest regions remained relatively steady between 0-5%.
+Figure \@ref(fig:plot1xw) shows that among all of the seven regions, Sub-Saharan Africa has the highest percentage of primary-school-age children out of school, followed by South Asia and Middle East & North Africa. However, all of these three countries witnessed a decrease in the percentage, especially in Sub-Saharan Africa, the figure dropped from nearly 40% in 2000 to lower than 20% in 2019. As suggested by @bennell2002hitting, high levels of sustained enrollment growth could be observed in Sub-Sahara Africa between 2000 and 2015. The percentage in South Asia and Middle East & North Africa also decreased to below 10% in 2019 while the figure for rest regions remained relatively steady between 0-5%.
 
 ```{r plot1xw, fig.cap="Percentage of children out of school in primary school age"}
 os_clean %>% 
