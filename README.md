@@ -19,7 +19,9 @@ Data sets used in this report are provided by the World Bank.
 ## Installations
 
 library(tidyverse)
+
 library(readr)
+
 library(kableExtra)
 library(bookdown)
 library(ggplot2)
@@ -32,10 +34,10 @@ library(knitr)
 
 ## Team members
 
-"Mengyuan YANG" myan0065@student.monash.edu
-"Zoljargal BATSAIKHAN" zbat0001@student.monash.edu
-"Xinrui WANG" xwan0274@student.monash.edu
-"Xueqi GOH" xgoh0002@student.monash.edu
+* "Mengyuan YANG" myan0065@student.monash.edu
+* "Zoljargal BATSAIKHAN" zbat0001@student.monash.edu
+* "Xinrui WANG" xwan0274@student.monash.edu
+* "Xueqi GOH" xgoh0002@student.monash.edu
 
 ## Contributing
 Pull requests are welcome. 
