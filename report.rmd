@@ -2,7 +2,7 @@
 title: "What does data tell us about the education situations around the world?"
 author:
 - familyname: YANG
-  othernames: Mengyuan
+  othernames: Mengyun
   address: Monash University
   email: "myan0065@student.monash.edu"
   correspondingauthor: true
@@ -25,7 +25,7 @@ author:
   email: "xgoh0002@student.monash.edu"
   correspondingauthor: true
   qualifications: Master of Business Analytics
-department: Our consultancy \newline Mengyuan YANG &\newline Zoljargal BATSAIKHAN &\newline Xinrui WANG &\newline Xueqi GOH
+department: Our consultancy \newline Mengyun YANG &\newline Zoljargal BATSAIKHAN &\newline Xinrui WANG &\newline Xueqi GOH
 organization: Monash University
 bibliography: references.bib
 biblio-style: authoryear-comp
