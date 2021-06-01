@@ -1,5 +1,5 @@
 ---
-title: " "
+title: "What does data tell us about the education situations around the world?"
 author:
 - familyname: YANG
   othernames: Mengyuan
@@ -42,6 +42,7 @@ output:
     number_sections: yes
     citation_package: biblatex
     toc: true
+    
 ---
 
 ```{r , echo = FALSE, message = FALSE, warning = FALSE}
@@ -130,6 +131,117 @@ data_joined <- df_filter %>%
 
 \section*{Xueqi}
 
+This section discuss the pupil-teacher ratio from 2000-2019
+```{r Plot1}
+df_xq <- data_joined %>%
+   pivot_longer(cols = c("2000":"2019"),
+               names_to = "year",
+               values_to = "value") %>%
+ dplyr::filter(str_detect(indicator, 'Pupil-teacher ratio') & !str_detect(value, "NA") & !str_detect(Region, "NA")) %>%
+ rename("Income_group" = 'Income group',
+        "Indicator" = "indicator") 
+
+df2 <- df_xq %>%
+  group_by(Indicator, Region)
+  
+  time_figure <- ggplot(df2, aes(x = year,
+             y = value,
+             fill = Indicator)) +
+  geom_col(alpha = 0.8, width = 0.85, position = "fill") +
+  scale_fill_brewer(palette = "Dark2") +
+  scale_y_continuous(expand = c(0, 0.1)) +
+  coord_flip() +
+  
+  labs(
+    tittle = "Pupil-teacher ratio (%) between 2000-2019",
+    x = "Years",
+    y = "Pupil-teacher ratio (%)"
+  ) +
+  theme_minimal(base_family = "Roboto Condensed") +
+  theme(
+    plot.margin = margin(0.5, 0.5, 0.5, unit = "cm"),
+    plot.title = element_text(size = 15, face = "bold", hjust = 0.5),
+    strip.text.y = element_text(angle = 270, face = "bold"),
+    strip.placement = "outside",
+    axis.title.x = element_text(margin = margin(t = 0.5, b = 0.5, unit = "cm")),
+    axis.title.y = element_blank(),
+    axis.text = element_text(size = 10),
+    panel.grid.major.y = element_blank(),
+  ) +
+    ggtitle("Pupil-teacher ratio (%) between 2000-2019")
+
+plotly::ggplotly(time_figure)
+```  
+  
+Figure \@ref(fig:Plot1) Pupil-teacher ratio seems similar across 2000-2018. However, in 2019, there's a significant decrease in pupil-teacher ratio especially in tertiary level and primary level. Next, there's an increase pupil-teacher ratio in upper secondary level, secondary level and lower secondary level. 
+
+```{r Table2}
+ df3 <- df_xq %>%
+  group_by(Indicator, Region) %>%
+  select(Indicator, Region, value) %>%
+  summarise(Average_ratio = mean(value, na.rm = TRUE)) %>% 
+  arrange(Average_ratio) %>% 
+  kable(caption =  "Regional Average Pupil-teacher ratio between 2000-2019") %>%
+  kable_styling (bootstrap_options = c("striped", "hover")) 
+  
+  
+df3
+```    
+```{r Table3}
+ df4 <- df_xq %>%
+  group_by(Indicator, Region) %>%
+  select(Indicator, Region, value) %>%
+  summarise(Average_ratio = mean(value, na.rm = TRUE)) %>% 
+  arrange(-Average_ratio) %>% 
+  kable(caption =  "Regional Average Pupil-teacher ratio between 2000-2019") %>%
+  kable_styling (bootstrap_options = c("striped", "hover")) 
+  
+  
+df4
+```  
+Table \@ref(tab:Table2) and Table \@ref(tab:Table3) indicates that the highest average ratio is 41.887322 in Sub-saharan Africa's primary level between 2000-2019 holding other variable constant. Holding other variable constant, the lowest average ratio is 7.883399 in North America's lower-secondary level between 2000-2019
+  
+```{r Plot2, warning=FALSE}
+
+library(ggthemes)
+df3 <- df_xq %>%
+  select("Indicator", "Income_group", "value", "Region") %>%
+  group_by(Income_group, Indicator, Region) %>%
+  summarise(Average_ratio = mean(value, na.rm = TRUE)) 
+
+region_ratio <- ggplot(df3, aes(x = Average_ratio,
+                      y = Indicator,
+                      fill = Income_group,
+                      color = Income_group)) +
+  geom_col() +
+  facet_wrap( ~ Region) +
+  theme_economist() +
+  scale_fill_manual(values = economist_pal(fill = TRUE)(4)) +
+  scale_color_manual(values = economist_pal(fill = TRUE)(4)) +
+  theme(text = element_text(size=5),
+        plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Average pupil-teacher ratio on different income group in each region")
+  
+plotly::ggplotly(region_ratio)
+
+```
+
+  
+Figure \@ref(fig:Plot2) Interestingly, it seems that Sub-Saharan Africa, South Asia and Middle East & North Africa has greater proportion in low income group comparing to other countries.  Middle East & North Africa and Sub-Saharan Africa has greater average pupil-teacher ratio in primary level. Europe& Central Asia has similar average pupil-teacher ratio across region. East Asia & Pacific and Latin America & Caribbean has similar average pupil-teacher ratio.
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section*{Conclusion}
-
