@@ -128,7 +128,7 @@ data_joined <- df_filter %>%
 The purpose of this report is to analyse the different education situations across various regions and income groups using data collected from 2000 and 2019, there are four key aspects discussed in this report:
 
 - Literacy rate of adults and youth
-- Discuss the Government Expenditure on Education in percentage of GDP
+- Government Expenditure on Education in percentage of GDP
 - Percentage of primary-school-aged children out of school
 - Pupil-teacher ratio
 
