@@ -156,16 +156,11 @@ lit_long %>%
   labs(x = "Year",
        y = "Literacy Rate",
        fill = "Age") +
-  ggtitle("Global Literacy Rate for Adult and Youth between 2000-2019") +
-  transition_time(as.numeric(year)) +
-  enter_grow() +
-  shadow_mark(past = TRUE)
-
-animate(plot3, fps = 20, duration =15, end_pause = 10)
+  ggtitle("Global Literacy Rate for Adult and Youth between 2000-2019") 
   
 ```
 
-Figure \@ref(fig:world-my) shows that although the literacy rate for adult aged 15 and above is lower that the literacy rate for youth aged 15-24 in each year, both rates are showing a slow and steady increase over the years. The improvements in the expansion of basic education and the reduction of education inequalities have contributed to an increase in the global literacy rate, over the last 65 years it increased by 4% every 5 years (Roser and Ortiz-Ospina, 2016)
+Figure \@ref(fig:world-my) shows that although the literacy rate for adult aged 15 and above is lower that the literacy rate for youth aged 15-24 in each year, both rates are showing a slow and steady increase over the years. The improvements in the expansion of basic education and the reduction of education inequalities have contributed to an increase in the global literacy rate, over the last 65 years it increased by 4% every 5 years (Roser and Ortiz-Ospina, 2016).
 
 https://ourworldindata.org/literacy#citation
 
@@ -176,34 +171,6 @@ https://ourworldindata.org/literacy#citation
     year = {2016},
     note = {https://ourworldindata.org/literacy}
 }
-
-
-
-
-```{r plot1my, eval = FALSE}
-# animation
-plot1 <- lit_long %>% 
-  filter(country_name == "World") %>% 
-  ggplot(aes(x = year,
-             y = rate,
-             fill = indicator)) +
-  geom_col(position = "dodge", width = 0.7) +
-  theme_light() +
-  ylim(0, 100) +
-  theme(axis.text.x = element_text(angle = 60, vjust = 0.5, hjust=0.5)) +
-  scale_fill_brewer(palette = "Paired") +
-  labs(x = "Year",
-       y = "Literacy Rate",
-       fill = "Age") +
-  ggtitle("Global Literacy Rate for Adult and Youth between 2000-2019") +
-  transition_time(as.numeric(year)) +
-  enter_grow() +
-  shadow_mark(past = TRUE)
-
-animate(plot1, fps = 20, duration = 15, end_pause = 80)
-```
-
-
 
 
 ```{r regions-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE, warning = FALSE}
@@ -231,39 +198,7 @@ lit_long %>%
   ggtitle("Literacy Rate for Adult and Youth in Differenet Regions") 
 ```
 
-As the figure \@ref(fig:regions-my) shown above, there was a significant increase in the literacy rate in adult aged 15 and above in Middle East & North Africa, South Asia and Sub-Saharan Africa. South Asia and Sub-Saharan Africa also had improved the literacy rate tremendously in the youth age group over the years. Both East Asia & Pacific and Latin America & Caribbean had an 5% increase in literacy rate in the adult group where as the literacy rate increase approximately 4% in the youth group in Latin America & Caribbean and a small increase in the youth group in East Asia & Pacific. Regions like Central Europe and the Baltics and Europe & Central Asia had maintained a high literacy rate in both age groups over the years. Developed countries have better education facilities and system than developing countries, they tend to have higher literacy rate over the years.
-
-
-```{r plot2my, eval = FALSE}
-# animation
-plot2 <- lit_long %>% 
-  filter(country_name %in% c("Central Europe and the Baltics",
-                             "East Asia & Pacific",
-                             "Europe & Central Asia",
-                             "Latin America & Caribbean",
-                             "Middle East & North Africa",
-                             "South Asia",
-                             "Sub-Saharan Africa")) %>% 
-  group_by(indicator) %>% 
-  ggplot(aes(x = year,
-             y = rate,
-             group = country_name,
-             color = country_name)) +
-  geom_line() +
-  facet_wrap(~indicator) +
-  theme_light() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5)) +
-  scale_colour_brewer(palette = "Paired") +
-  labs(x = "Year",
-       y = "Literacy Rate",
-       color = "Regions") +
-  ggtitle("Literacy Rate for Adult and Youth in Differenet Regions") +
-  transition_reveal(as.numeric(year)) +
-  enter_grow() +
-  shadow_mark(past = TRUE)
-
-animate(plot2, fps = 20, duration = 8, end_pause = 80)
-```
+As the figure \@ref(fig:regions-my) shown above, there was a significant increase in the literacy rate for adult aged 15 and above in Middle East & North Africa, South Asia and Sub-Saharan Africa. South Asia and Sub-Saharan Africa also had improved the literacy rate tremendously in the youth age group over the years. Both East Asia & Pacific and Latin America & Caribbean had an 5% increase in literacy rate in the adult group where as the literacy rate increase approximately 4% in the youth group in Latin America & Caribbean and a small increase in the youth group in East Asia & Pacific. Regions like Central Europe and the Baltics and Europe & Central Asia had maintained a high literacy rate in both age groups over the years. Developed countries have better education facilities and system than developing countries, they tend to have higher literacy rate over the years.
 
 
 ```{r income-my, fig.cap = "Literacy Rate for Adult and Youth in Differenet Income Groups", echo = FALS}
@@ -287,35 +222,9 @@ lit_long %>%
   ggtitle("Literacy Rate for Adult and Youth in Differenet Income Groups")
 ```
 
-Figure \@ref(fig:income-my) demonstrates that both adult and youth groups that have higher income tend to have higher literacy rate
+Figure \@ref(fig:income-my) demonstrates that both adult and youth groups that have higher income tend to have higher literacy rate and all the income groups are showing an increasing trend in the literacy rate except for the upper middle income group had maintained a very high literacy rate over the years. It's pretty obvious that people have higher income are able to afford better education compare to those people with lower income.
 
 
-```{r plot3my, eval = FALSE}
-# animation
-plot3 <- lit_long %>% 
-  filter(country_name %in% c("Low income",
-                             "Lower middle income",
-                             "Middle income",
-                             "Upper middle income")) %>% 
-  ggplot(aes(x = year,
-             y = rate,
-             fill = indicator)) +
-  geom_col(position = "dodge") +
-  facet_wrap(~country_name, 
-             ncol = 2) +
-  theme_light() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5)) +
-  scale_fill_brewer(palette = "Paired") +
-  labs(x = "Year",
-       y = "Literacy Rate",
-       fill = "Age") +
-  ggtitle("Literacy Rate for Adult and Youth in Differenet Income Groups")  +
-  transition_time(as.numeric(year)) +
-  enter_grow() +
-  shadow_mark(past = TRUE)
-  
-animate(plot3, fps = 20, duration = 20, end_pause = 80)
-```
 
 
 
