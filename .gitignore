@@ -38,3 +38,7 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 .DS_Store
+.bbl
+.log
+.tex
+report_files/
