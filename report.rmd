@@ -131,6 +131,17 @@ data_joined <- df_filter %>%
                                 "country_code" = "Code")) 
 ```
 
+
+The purpose of this report is to analyse the different education situations across various regions and income groups using data collected from 2000 and 2019, there are four key aspects discussed in this report:
+
+- Literacy rate of adults and youth
+- Discuss the Government Expenditure on Education in percentage of GDP
+- Percentage of primary-school-aged children out of school
+- Pupil-teacher ratio
+
+Data sets used in this report are provided by the World Bank, which are [Education](https://data.worldbank.org/topic/education?end=2018&start=1998&view=chart) and [World Bank Country and Lending Groups](https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups). Both data sets falls under [Creative Commons Attribution 4.0 International license](https://datacatalog.worldbank.org/public-licenses) and are allowed to use for analysis purpose of this report.
+
+
 \section*{Literacy Rate}
 
 This section is to compare the literacy rate for adult and youth globally, regionally and in different age groups.
@@ -173,7 +184,6 @@ lit_long %>%
 
 Figure \@ref(fig:world-my) shows that although the literacy rate for adult aged 15 and above is lower that the literacy rate for youth aged 15-24 in each year, both rates are showing a slow and steady increase over the years. The improvements in the expansion of basic education and the reduction of education inequalities have contributed to an increase in the global literacy rate, over the last 65 years it increased by 4% every 5 years (@owidliteracy).
 
-
 ```{r regions-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", out.width = "90%", echo = FALSE, warning = FALSE}
 lit_long %>% 
   filter(country_name %in% c("Central Europe and the Baltics",
@@ -200,7 +210,6 @@ lit_long %>%
 ```
 
 As the figure \@ref(fig:regions-my) shown above, there was a significant increase in the literacy rate for adult aged 15 and above in Middle East & North Africa, South Asia and Sub-Saharan Africa. South Asia and Sub-Saharan Africa also had improved the literacy rate tremendously in the youth age group over the years. Both East Asia & Pacific and Latin America & Caribbean had an 5% increase in literacy rate in the adult group where as the literacy rate increase approximately 4% in the youth group in Latin America & Caribbean and a small increase in the youth group in East Asia & Pacific. Regions like Central Europe and the Baltics and Europe & Central Asia had maintained a high literacy rate in both age groups over the years. Developed countries have better education facilities and system than developing countries, they tend to have higher literacy rate over the years.
-
 
 ```{r income-my, fig.cap = "Literacy Rate for Adult and Youth in Differenet Income Groups", out.width = "90%", echo = FALSE}
 lit_long %>% 
@@ -489,9 +498,10 @@ os_diff[order(-os_diff$`2000`),] %>%
 Another interesting finding is that in Europe & Central Asia and Latin America & Caribbean, the difference in percentage is -0.14% and -0.56% respectively in 2019, which indicates that in 2019, the percentage of primary-school-age male who are not enrolled in primary or secondary school is actually slightly higher than female, although the difference is very close to zero (Table \@ref(tab:tb1xw)).
 
 
-\section*{Xueqi}
+\section*{Pupil-teacher Ratio}
 
-This section discuss the pupil-teacher ratio from 2000-2019
+This section discusses the pupil-teacher ratio from 2000-2019.
+
 ```{r Plot1}
 df_xq <- data_joined %>%
    pivot_longer(cols = c("2000":"2019"),
@@ -559,6 +569,7 @@ df3
   
 df4
 ```  
+
 Table \@ref(tab:Table2) and Table \@ref(tab:Table3) indicates that the highest average ratio is 41.887322 in Sub-saharan Africa's primary level between 2000-2019 holding other variable constant. Holding other variable constant, the lowest average ratio is 7.883399 in North America's lower-secondary level between 2000-2019
   
 ```{r Plot2, warning=FALSE}
@@ -586,22 +597,9 @@ plotly::ggplotly(region_ratio)
 
 ```
 
-  
 Figure \@ref(fig:Plot2) Interestingly, it seems that Sub-Saharan Africa, South Asia and Middle East & North Africa has greater proportion in low income group comparing to other countries.  Middle East & North Africa and Sub-Saharan Africa has greater average pupil-teacher ratio in primary level. Europe& Central Asia has similar average pupil-teacher ratio across region. East Asia & Pacific and Latin America & Caribbean has similar average pupil-teacher ratio.
   
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section*{Conclusion}
+
+Based on the findings discussed in this report, literacy rate overall shows an increasing trend since 2000, the improvements in the expansion of basic education and the reduction of education inequalities have contributed to the increase over the years. Total amount of global resources spent on education is increasing over the world, whereas the percentage of children out of primary school and the difference in percentage between male and female is also decreasing. In addition, middle income group has an overall steady average pupil-teacher ratio in each education level comparing to high and low income, while Europe & Central Asia and Middle East & North Africa has the most complete distribution of each income group in each education level. Overall, the global education situations are indeed getting better over the years.
