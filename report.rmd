@@ -46,8 +46,12 @@ output:
 ---
 
 ```{r , echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      messages = FALSE, 
+                      warning = FALSE)
 # Libraries
 library(tidyverse)
+options(dplyr.summarise.inform = FALSE)
 library(readr)
 library(kableExtra)
 library(bookdown)
@@ -59,6 +63,7 @@ library(naniar)
 library(gganimate)
 library(gifski)
 library(png)
+library(ggthemes)
 ```
 
 ```{r setup, echo = FALSE}
@@ -227,8 +232,152 @@ Figure \@ref(fig:income-my) demonstrates that both adult and youth groups that h
 
 
 
-\section*{Zoljargal}
+\section*{Education expenditure trend over the world}
 
+In this section we will discuss education expenditure across different countries in time period of 2000 to 2019. The indicator we have chosen to analyze in this section is:
+
+* Government expenditure on education, total (% of GDP). 
+
+General government expenditure on education (current, capital, and transfers) is expressed as a percentage of Gross Domestic Product (GDP). It includes expenditure funded by transfers from international sources to government. 
+
+```{r}
+data_gdp <- read_excel("data/GDPpercapita.xls", range = anchored("A4", dim = c(265,64))) %>% 
+  select("Country Name", 
+         "Country Code", 
+         "2000":"2019") %>% 
+  rename("country_name" = "Country Name",
+         "country_code" = "Country Code") %>% 
+  pivot_longer(cols = "2000":"2019",
+               names_to = "year",
+               values_to = "GDPpercapita")
+
+data_zb <- data_joined %>% 
+  pivot_longer(cols = c("2000":"2019"),
+               names_to = "year",
+               values_to = "value") %>% 
+  filter(indicator %in% c("Government expenditure on education, total (% of GDP)",
+                          "Government expenditure on education, total (% of government expenditure)",
+                          "Expenditure on secondary education (% of government expenditure on education)",
+                          "Government expenditure per student, secondary (% of GDP per capita)",
+                          "Expenditure on primary education (% of government expenditure on education)",
+                          "Government expenditure per student, primary (% of GDP per capita)")) %>% 
+  pivot_wider(names_from = indicator,
+              values_from = value) %>% 
+  drop_na(Region) %>% 
+  rename("income_group" = "Income group",
+         "region" = "Region")
+
+selected_indicators = c("Government expenditure on education, total (% of GDP)",
+                          "Government expenditure on education, total (% of government expenditure)",
+                          "Expenditure on secondary education (% of government expenditure on education)",
+                          "Government expenditure per student, secondary (% of GDP per capita)",
+                          "Expenditure on primary education (% of government expenditure on education)",
+                          "Government expenditure per student, primary (% of GDP per capita)")
+
+new_name = c("ex_total_GDP",
+             "ex_total_gov_ex",
+             "ex_secondary",
+             "ex_per_student_secondary",
+             "ex_primary",
+             "ex_per_student_primary")
+
+for(i in 1:6) names(data_zb)[names(data_zb) == selected_indicators[i]] = new_name[i]
+
+data_zb$country_name[which(data_zb$country_name == "United States")] = "USA"
+data_zb$country_name[which(data_zb$country_name == "United Kingdom")] = "UK"
+data_zb$country_name[which(data_zb$country_name == "Russian Federation")] = "Russia"
+data_zb$country_name[which(data_zb$country_name == "Iran, Islamic Rep.")] = "Iran"
+data_zb$country_name[which(data_zb$country_name == "Congo, Rep.")] = "Democratic Republic of the Congo"
+data_zb$country_name[which(data_zb$country_name == "Venezuela, RB")] = "Venezuela"
+data_zb$country_name[which(data_zb$country_name == "Yemen, Rep.")] = "Yemen"
+data_zb$country_name[which(data_zb$country_name == "Egypt, Arab Rep.")] = "Egypt"
+
+data_zb <- data_zb %>% 
+  left_join(data_gdp, by = c("country_name", "country_code", "year"))
+```
+
+```{r}
+data1_zb <- data_zb %>% 
+  group_by(country_name) %>% 
+  summarise(mean = mean(ex_total_GDP, na.rm = TRUE))
+
+world_map <- map_data("world")
+
+data1_zb_wm <- world_map %>% 
+  left_join(data1_zb, by = c("region" = "country_name"))
+```
+
+```{r plot1zb, fig.cap = "Average government expenditure on education (% of GDP), 2000-2019"}
+data1_zb_wm %>% 
+  ggplot(aes(long, lat, group = group))+
+  geom_polygon(aes(fill = mean), color = "white")+
+  scale_fill_viridis_c(option = "C") +
+  ggtitle("World map", subtitle = "Average government expenditure on education (% of GDP), 2000-2019")+
+  theme_map() +
+  coord_cartesian(ylim = c(-50, 90)) 
+```
+Figure \@ref(fig:plot1zb), provides an overview of spending on education by country. To produce the figure, we calculated average spending over the time period for each country. The average government spending on education across countries ranged between 1.2% - 11.5% of their GDP.
+
+```{r plot2-zb, fig.cap = "Government expenditure on education (% of GDP), by income group"}
+data2_zb <- data_zb %>% 
+  filter(year != "2019") %>% 
+  group_by(income_group, year) %>% 
+  summarise(mean = mean(ex_total_GDP, na.rm = TRUE))
+
+ggplot(data2_zb, aes(x=year, y=mean, group = income_group)) + 
+    geom_line(aes(color = income_group)) +
+  geom_point(aes(color = income_group))+
+  labs(x = "Year", y = "Average expenditure") +
+  scale_fill_brewer(palette="Paired") +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+Then we looked at the government expenditure on education by income group over time in Figure \@ref(fig:plot2-zb). What evident on the graph is that the low income countries have devoted much lesser proportion of their GDP but also we can see that spending has increased on average for those countries. On the other hand, high income countries spending more share of their GDP roughly between 4.5% to 5%. However the data had many missing values, a broad upward trend can be observed from the Figure \@ref(fig:plot2-zb).
+
+```{r plot3-zb, fig.cap = "Government expenditure on education (% of GDP), by region"}
+data3_zb <- data_zb %>% 
+  filter(year != "2019",
+         region != "North America") %>% 
+  group_by(region, year) %>% 
+  summarise(mean = mean(ex_total_GDP, na.rm = TRUE)) 
+
+data3_zb %>% 
+  ggplot(aes(x=year, y=mean, group = region)) + 
+    geom_line(aes(color = region)) +
+  geom_point(aes(color = region))+
+  labs(x = "Year", y = "Average expenditure") +
+  scale_fill_brewer(palette="Paired") +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+```
+
+In Figure \@ref(fig:plot3-zb), we visualized the education spending by geographical regions. During the time period, South Asia and Sub-Saharan Africa had the lowest spending ranging between 3-4% but again, the plot shows upward trend for those regions. For the other regions, it seems that it has been relatively stable over time.
+
+```{r plot4-zb, fig.cap = "Government expenditure on education (% of GDP), by income group, in 2000 and 2015"}
+data_zb %>% 
+  filter(year != "2019") %>% 
+  group_by(income_group, year) %>% 
+  summarise(mean = mean(ex_total_GDP, na.rm = TRUE)) %>% 
+  pivot_wider(names_from = year,
+              values_from = mean) %>% 
+  select(income_group, "2000", "2015") %>% 
+  mutate(change = (`2015` - `2000`)/`2000`*100) %>% 
+  kable(col.names = c("Income groups", 
+                      "2000",
+                      "2015",
+                      "Percentage change"),
+        align = "c",
+        caption = "Total government expenditure on educationby income group in 2000 and 2015",
+        digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped","hover"),
+                latex_options = "HOLD_position")
+
+```
+As shown in Table \@ref(tab:plot4-zb), the increase in education spending is evident for the majority of countries. But it remained at the same level for the upper middle income countries.
+
+Overall, it can be concluded that the total amount of global resources spent on education is increasing over the world. But according to the article \cite{trabelsi2018public}, it is suggested that if the governance is weak more public spending on education leads to lower growth. However, the improvement of the quality of institutions enhances the economic performance.
 
 \section*{Xinrui}
 
