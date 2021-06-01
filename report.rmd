@@ -187,8 +187,19 @@ Figure \@ref(fig:Plot1) Pupil-teacher ratio seems similar across 2000-2018. Howe
   
 df3
 ```    
-
-Table \@ref(tab:Table2) indicates that the highest average ratio is 41.887322 in Sub-saharan Africa's primary level between 2000-2019 holding other variable constant. Holding other variable constant, the lowest average ratio is 7.883399 in North America's lower-secondary level between 2000-2019
+```{r Table3}
+ df4 <- df_xq %>%
+  group_by(Indicator, Region) %>%
+  select(Indicator, Region, value) %>%
+  summarise(Average_ratio = mean(value, na.rm = TRUE)) %>% 
+  arrange(-Average_ratio) %>% 
+  kable(caption =  "Regional Average Pupil-teacher ratio between 2000-2019") %>%
+  kable_styling (bootstrap_options = c("striped", "hover")) 
+  
+  
+df4
+```  
+Table \@ref(tab:Table2) and Table \@ref(tab:Table3) indicates that the highest average ratio is 41.887322 in Sub-saharan Africa's primary level between 2000-2019 holding other variable constant. Holding other variable constant, the lowest average ratio is 7.883399 in North America's lower-secondary level between 2000-2019
   
 ```{r Plot2, warning=FALSE}
 
