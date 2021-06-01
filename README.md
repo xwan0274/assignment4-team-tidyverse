@@ -23,13 +23,21 @@ library(tidyverse)
 library(readr)
 
 library(kableExtra)
+
 library(bookdown)
+
 library(ggplot2)
+
 library(gridExtra)
+
 library(tinytex)
+
 library(readxl)
+
 library(naniar)
+
 library(ggthemes)
+
 library(knitr)
 
 ## Team members
