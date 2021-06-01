@@ -129,7 +129,6 @@ data_joined <- df_filter %>%
                                 "country_code" = "Code")) 
 ```
 
-
 The purpose of this report is to analyse the different education situations across various regions and income groups using data collected from 2000 and 2019, there are four key aspects discussed in this report:
 
 - Literacy rate of adults and youth
