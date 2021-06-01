@@ -540,7 +540,7 @@ df2 <- df_xq %>%
   ) +
     ggtitle("Pupil-teacher ratio (%) between 2000-2019")
 
-plotly::ggplotly(time_figure)
+ggplot(time_figure)
 ```  
   
 Figure \@ref(fig:Plot1) Pupil-teacher ratio seems similar across 2000-2018. However, in 2019, there's a significant decrease in pupil-teacher ratio especially in tertiary level and primary level. Next, there's an increase pupil-teacher ratio in upper secondary level, secondary level and lower secondary level. 
@@ -555,7 +555,7 @@ Figure \@ref(fig:Plot1) Pupil-teacher ratio seems similar across 2000-2018. Howe
   kable_styling (bootstrap_options = c("striped", "hover")) 
   
   
-df3
+head(df3,5)
 ```    
 ```{r Table3}
  df4 <- df_xq %>%
@@ -566,8 +566,7 @@ df3
   kable(caption =  "Regional Average Pupil-teacher ratio between 2000-2019") %>%
   kable_styling (bootstrap_options = c("striped", "hover")) 
   
-  
-df4
+head(df4,5)
 ```  
 
 Table \@ref(tab:Table2) and Table \@ref(tab:Table3) indicates that the highest average ratio is 41.887322 in Sub-saharan Africa's primary level between 2000-2019 holding other variable constant. Holding other variable constant, the lowest average ratio is 7.883399 in North America's lower-secondary level between 2000-2019
@@ -593,11 +592,16 @@ region_ratio <- ggplot(df3, aes(x = Average_ratio,
         plot.title = element_text(hjust = 0.5)) +
   ggtitle("Average pupil-teacher ratio on different income group in each region")
   
-plotly::ggplotly(region_ratio)
 
+ggplot(region_ratio)
 ```
 
+<<<<<<< HEAD
 Figure \@ref(fig:Plot2) Interestingly, it seems that Sub-Saharan Africa, South Asia and Middle East & North Africa has greater proportion in low income group comparing to other countries.  Middle East & North Africa and Sub-Saharan Africa has greater average pupil-teacher ratio in primary level. Europe& Central Asia has similar average pupil-teacher ratio across region. East Asia & Pacific and Latin America & Caribbean has similar average pupil-teacher ratio.
+=======
+  
+Figure \@ref(fig:Plot2) Interestingly, it seems that Sub-Saharan Africa, South Asia and Middle East & North Africa has greater proportion in low income group comparing to other countries.  Middle East & North Africa and Sub-Saharan Africa has greater average pupil-teacher ratio in primary level. Europe& Central Asia has similar average pupil-teacher ratio across region. East Asia & Pacific and Latin America & Caribbean has similar average pupil-teacher ratio. Significantly, pupil-teacher ratios are very essential to quality of education. They perhaps rank alongside professional knowledge, skill, as well as strategies, in genuinely determining educational success and performance (@ikediashi2012pupil). 
+>>>>>>> 583914d7d4bb39d9af4e5ddb23219872da306edd
   
 
 \section*{Conclusion}
