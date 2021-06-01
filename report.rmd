@@ -505,6 +505,7 @@ Another interesting finding is that in Europe & Central Asia and Latin America &
 This section discusses the pupil-teacher ratio from 2000-2019.
 
 ```{r Plot1, fig.cap = "Pupil-teacher ratio (%) between 2000-2019"}
+
 df_xq <- data_joined %>%
    pivot_longer(cols = c("2000":"2019"),
                names_to = "year",
