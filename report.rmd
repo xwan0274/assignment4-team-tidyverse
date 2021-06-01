@@ -64,6 +64,7 @@ library(gganimate)
 library(gifski)
 library(png)
 library(ggthemes)
+library(knitr)
 ```
 
 ```{r setup, echo = FALSE}
@@ -514,7 +515,7 @@ df_xq <- data_joined %>%
 df2 <- df_xq %>%
   group_by(Indicator, Region)
   
-  time_figure <- ggplot(df2, aes(x = year,
+ ggplot(df2, aes(x = year,
              y = value,
              fill = Indicator)) +
   geom_col(alpha = 0.8, width = 0.85, position = "fill") +
@@ -527,7 +528,6 @@ df2 <- df_xq %>%
     x = "Years",
     y = "Pupil-teacher ratio (%)"
   ) +
-  theme_minimal(base_family = "Roboto Condensed") +
   theme(
     plot.margin = margin(0.5, 0.5, 0.5, unit = "cm"),
     plot.title = element_text(size = 15, face = "bold", hjust = 0.5),
@@ -540,7 +540,7 @@ df2 <- df_xq %>%
   ) +
     ggtitle("Pupil-teacher ratio (%) between 2000-2019")
 
-ggplot(time_figure)
+
 ```  
   
 Figure \@ref(fig:Plot1) Pupil-teacher ratio seems similar across 2000-2018. However, in 2019, there's a significant decrease in pupil-teacher ratio especially in tertiary level and primary level. Next, there's an increase pupil-teacher ratio in upper secondary level, secondary level and lower secondary level. 
@@ -554,10 +554,10 @@ Figure \@ref(fig:Plot1) Pupil-teacher ratio seems similar across 2000-2018. Howe
   kable(caption =  "Regional Average Pupil-teacher ratio between 2000-2019") %>%
   kable_styling (bootstrap_options = c("striped", "hover")) 
   
-  
-head(df3,5)
+df3
 ```    
-```{r Table3}
+
+```{r Table3, message=FALSE}
  df4 <- df_xq %>%
   group_by(Indicator, Region) %>%
   select(Indicator, Region, value) %>%
@@ -566,7 +566,7 @@ head(df3,5)
   kable(caption =  "Regional Average Pupil-teacher ratio between 2000-2019") %>%
   kable_styling (bootstrap_options = c("striped", "hover")) 
   
-head(df4,5)
+df4
 ```  
 
 Table \@ref(tab:Table2) and Table \@ref(tab:Table3) indicates that the highest average ratio is 41.887322 in Sub-saharan Africa's primary level between 2000-2019 holding other variable constant. Holding other variable constant, the lowest average ratio is 7.883399 in North America's lower-secondary level between 2000-2019
@@ -579,7 +579,7 @@ df3 <- df_xq %>%
   group_by(Income_group, Indicator, Region) %>%
   summarise(Average_ratio = mean(value, na.rm = TRUE)) 
 
-region_ratio <- ggplot(df3, aes(x = Average_ratio,
+ggplot(df3, aes(x = Average_ratio,
                       y = Indicator,
                       fill = Income_group,
                       color = Income_group)) +
@@ -593,7 +593,7 @@ region_ratio <- ggplot(df3, aes(x = Average_ratio,
   ggtitle("Average pupil-teacher ratio on different income group in each region")
   
 
-ggplot(region_ratio)
+
 ```
 
 <<<<<<< HEAD
