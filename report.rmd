@@ -1,5 +1,5 @@
 ---
-title: " "
+title: "What does data tell us about the education situations around the world?"
 author:
 - familyname: YANG
   othernames: Mengyuan
@@ -32,6 +32,7 @@ biblio-style: authoryear-comp
 linestretch: 1.5
 output:
   bookdown::pdf_document2:
+    extra_dependencies: ["float"]
     template: monashreport2.tex
     fig_caption: yes
     fig_height: 5
@@ -60,10 +61,13 @@ library(gifski)
 library(png)
 ```
 
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
+```
 
 \section*{Introduction}
 
-```{r}
+```{r, include = FALSE}
 excel_sheets("data/API_4_DS2_en_excel_v2_2252569.xls")
 
 data_income <- read_excel("data/CLASS.xls", range = anchored("C5", dim = c(220,5))) %>% 
@@ -71,7 +75,7 @@ data_income <- read_excel("data/CLASS.xls", range = anchored("C5", dim = c(220,5
   filter(Economy != "x")
 ```
 
-```{r}
+```{r, echo = FALSE}
 df<- read_excel("Data/API_4_DS2_en_excel_v2_2252569.xls", sheet = 1, range = "A4:BM42772") %>% 
   select("Country Name", 
          "Country Code",
@@ -83,14 +87,14 @@ df<- read_excel("Data/API_4_DS2_en_excel_v2_2252569.xls", sheet = 1, range = "A4
 ```
 
 
-```{r}
+```{r, include = FALSE}
 df %>%
   group_by(country_name) %>%
   miss_var_summary() %>% 
   arrange(-pct_miss)
 ```
 
-```{r}
+```{r, echo = FALSE}
 df_filter <- df %>% 
   filter(!(country_name %in% c("Faroe Islands",
                           "Greenland",
@@ -116,7 +120,7 @@ df_filter <- df %>%
        
 ```
 
-```{r}
+```{r, echo = FALSE}
 data_joined <- df_filter %>% 
     left_join(data_income, by = c("country_name" = "Economy",
                                 "country_code" = "Code")) 
@@ -124,7 +128,9 @@ data_joined <- df_filter %>%
 
 \section*{Mengyun}
 
-```{r longdata-my, echo = FLASE}
+This section is to compare the literacy rate for adult and youth globally, regionally and in different age groups.
+
+```{r longdata-my, echo = FALSE}
 # filter and pivot data to longer form
 lit_long <- data_joined %>% 
   filter(str_detect(indicator, "Literacy")) %>% 
@@ -142,7 +148,7 @@ lit_long$indicator <- lit_long$indicator %>%
   str_remove("total  of people ")
 ```
 
-```{r world-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE, message = FALSE}
+```{r world-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", out.width = "90%", echo = FALSE}
 lit_long %>% 
   filter(country_name == "World") %>% 
   ggplot(aes(x = year,
@@ -156,24 +162,14 @@ lit_long %>%
   labs(x = "Year",
        y = "Literacy Rate",
        fill = "Age") +
-  ggtitle("Global Literacy Rate for Adult and Youth between 2000-2019") 
+  ggtitle("Global Literacy Rate for Adult and Youth between 2000-2019")
   
 ```
 
-Figure \@ref(fig:world-my) shows that although the literacy rate for adult aged 15 and above is lower that the literacy rate for youth aged 15-24 in each year, both rates are showing a slow and steady increase over the years. The improvements in the expansion of basic education and the reduction of education inequalities have contributed to an increase in the global literacy rate, over the last 65 years it increased by 4% every 5 years (Roser and Ortiz-Ospina, 2016).
-
-https://ourworldindata.org/literacy#citation
-
-@article{owidliteracy,
-    author = {Max Roser and Esteban Ortiz-Ospina},
-    title = {Literacy},
-    journal = {Our World in Data},
-    year = {2016},
-    note = {https://ourworldindata.org/literacy}
-}
+Figure \@ref(fig:world-my) shows that although the literacy rate for adult aged 15 and above is lower that the literacy rate for youth aged 15-24 in each year, both rates are showing a slow and steady increase over the years. The improvements in the expansion of basic education and the reduction of education inequalities have contributed to an increase in the global literacy rate, over the last 65 years it increased by 4% every 5 years (@owidliteracy).
 
 
-```{r regions-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", echo = FALSE, warning = FALSE}
+```{r regions-my, fig.cap = "Global Literacy Rate for Adult and Youth between 2000-2019", out.width = "90%", echo = FALSE, warning = FALSE}
 lit_long %>% 
   filter(country_name %in% c("Central Europe and the Baltics",
                              "East Asia & Pacific",
@@ -195,13 +191,13 @@ lit_long %>%
   labs(x = "Year",
        y = "Literacy Rate",
        color = "Regions") +
-  ggtitle("Literacy Rate for Adult and Youth in Differenet Regions") 
+  ggtitle("Literacy Rate for Adult and Youth in Differenet Regions")
 ```
 
 As the figure \@ref(fig:regions-my) shown above, there was a significant increase in the literacy rate for adult aged 15 and above in Middle East & North Africa, South Asia and Sub-Saharan Africa. South Asia and Sub-Saharan Africa also had improved the literacy rate tremendously in the youth age group over the years. Both East Asia & Pacific and Latin America & Caribbean had an 5% increase in literacy rate in the adult group where as the literacy rate increase approximately 4% in the youth group in Latin America & Caribbean and a small increase in the youth group in East Asia & Pacific. Regions like Central Europe and the Baltics and Europe & Central Asia had maintained a high literacy rate in both age groups over the years. Developed countries have better education facilities and system than developing countries, they tend to have higher literacy rate over the years.
 
 
-```{r income-my, fig.cap = "Literacy Rate for Adult and Youth in Differenet Income Groups", echo = FALS}
+```{r income-my, fig.cap = "Literacy Rate for Adult and Youth in Differenet Income Groups", out.width = "90%", echo = FALSE}
 lit_long %>% 
   filter(country_name %in% c("Low income",
                              "Lower middle income",
